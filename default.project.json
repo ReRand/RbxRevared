@@ -1,11 +1,27 @@
 {
 	"name": "Revared",
+	
 	"tree": {
 		"$className": "DataModel",
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
+			
 			"Revared": {
-				"$path": "src/Revared"
+				"$className": "ModuleScript",
+				"$path": "src/Revared",
+				
+				"Server": {
+					"$className": "ModuleScript",
+					"$path": "src/Server",
+					
+					"Events": {
+						"$className": "Folder",
+
+						"Out": { "$className": "RemoteEvent" },
+						"Post": { "$className": "RemoteEvent" },
+						"Request": { "$className": "RemoteEvent" }
+					}
+				}
 			}
 		}
 	}
