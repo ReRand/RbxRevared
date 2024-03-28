@@ -103,20 +103,26 @@ function Trigger.new(triggerPart, triggerSettings)
 	
 	local inEvent = Instance.new("RemoteEvent", Events);
 	inEvent.Name = "InEvent";
-
-	local referInEvent = Instance.new("BindableEvent", Events);
-	referInEvent.Name = "ReferInEvent";
-	
 	local outEvent = Instance.new("RemoteEvent", Events);
 	outEvent.Name = "OutEvent";
+
+	
+	local referInEvent = Instance.new("BindableEvent", Events);
+	referInEvent.Name = "ReferInEvent";
+	local referOutEvent = Instance.new("BindableEvent", Events);
+	referOutEvent.Name = "ReferOutEvent";
+
 	
 	local playerHandler = Instance.new("RemoteEvent", EventFolders);
 	playerHandler.Name = "PlayerHandler";
 
 
 	self._inEvent = inEvent;
-	self._referInEvent = referInEvent;
 	self._outEvent = outEvent;
+	
+	self._referInEvent = referInEvent;
+	self._referOutEvent = referOutEvent;
+	
 	self._playerHandler = playerHandler;
 
 	
