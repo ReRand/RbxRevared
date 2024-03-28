@@ -11,6 +11,15 @@
 				"$path": "Revared/Main",
 
 
+				"Experiments": {
+					"$className": "Folder",
+					"Trigger": {
+						"$className": "ModuleScript",
+						"$path": "Revared/Services/Trigger",
+					}
+				}
+				
+
 				"Services": {
 					"$className": "Folder",
 
@@ -30,27 +39,7 @@
 	
 					"Trigger": {
 						"$className": "ModuleScript",
-						"$path": "Revared/Services/Trigger",
-	
-						"TriggerPlayerHandler": {
-							"$className": "Script",
-	
-							"$properties": {
-								"RunContext": "Client"
-							},
-							
-							"$path": "Revared/Services/Trigger/TriggerPlayerHandler"
-						},
-	
-						"TriggerHandler": {
-							"$className": "Script",
-							
-							"$properties": {
-								"RunContext": "Client"
-							},
-							
-							"$path": "Revared/Services/Trigger/TriggerHandler"
-						}
+						"$path": "Revared/Services/Trigger"
 					},
 	
 					"Signal": {
