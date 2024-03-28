@@ -5,13 +5,14 @@ local character = script.Parent.Parent.Parent;
 
 local id = script.Parent.Name;
 local inEvent = rep.TriggerEvents[id].InEvent;
+local referInEvent = rep.TriggerEvents[id].referInEvent;
 local outEvent = rep.TriggerEvents[id].OutEvent;
 
 
 local touchBoolean = false;
 
 
-inEvent.OnClientEvent:Connect(function(partSects, id, triggerSettings)
+function Handle(partSects, id, triggerSettings)
 	
 	local TouchPart = nil;
 	
@@ -92,4 +93,8 @@ inEvent.OnClientEvent:Connect(function(partSects, id, triggerSettings)
 			touchBoolean = false;
 		end
 	end);
-end)
+end
+
+
+inEvent.OnClientEvent:Connect(Handle);
+referInEvent.Event:Connect(Handle);
