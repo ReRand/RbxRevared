@@ -115,5 +115,7 @@ function Trigger.new(triggerPart, triggerSettings)
 
 	
 	return self;
-    
 end
+
+
+return Trigger;
