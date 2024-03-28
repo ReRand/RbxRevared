@@ -8,11 +8,11 @@
 			
 			"Revared": {
 				"$className": "ModuleScript",
-				"$path": "src/Revared",
+				"$path": "Revared/Main",
 				
 				"Server": {
 					"$className": "ModuleScript",
-					"$path": "src/Server",
+					"$path": "Revared/Server",
 					
 					"Events": {
 						"$className": "Folder",
@@ -21,6 +21,31 @@
 						"Post": { "$className": "RemoteEvent" },
 						"Request": { "$className": "RemoteEvent" }
 					}
+				},
+
+
+				"Trigger": {
+					"$className": "ModuleScript",
+					"$path": "Revared/Trigger",
+
+					"TriggerPlayerHandler": {
+						"$className": "Script",
+						"$runContext": "Client",
+						
+						"$path": "Revared/Trigger/TriggerPlayerHandler"
+					},
+
+					"TriggerHandler": {
+						"$className": "Script",
+						"$runContext": "Client",
+						
+						"$path": "Revared/Trigger/TriggerHandler"
+					}
+				},
+
+				"Signal": {
+					"$className": "ModuleScript",
+					"$path": "Revared/Signal"
 				}
 			}
 		}
