@@ -1,2 +1,2 @@
-# Revared🔻| ReRand Game ToolKit 
+# Revared 🔻
 A Roblox developer toolkit made for ReRand games
