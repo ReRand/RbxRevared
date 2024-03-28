@@ -1,0 +1,12 @@
+{
+	"name": "RelKit",
+	"tree": {
+		"$className": "DataModel",
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"RelKit": {
+				"$path": "src/RelKit"
+			}
+		}
+	}
+}
