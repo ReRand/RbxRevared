@@ -1,14 +1,17 @@
 local Revared = {};
-local resources = script:GetChildren();
+local services = script.Services;
+local functions = script.Functions
 
 
-for _, res in pairs(resources) do
-    Revared[res.Name] = require(res);
+for _, serv in pairs(services:GetChildren()) do
+    if serv:IsA("ModuleScript") then
+        Revared[serv.Name] = require(serv);
+    end
 end
 
 
-function Revared:GetService(service: string)
-    return Revared[service];
+for _, f in ipairs(functions:GetChildren()) do
+	require(f)(Revared);
 end
 
 
