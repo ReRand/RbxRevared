@@ -1,8 +1,8 @@
 local DataStoreService = game:GetService("DataStoreService");
 
 
-local DataStores = require(script.Parent);
-local events = script.Parent.Events;
+local DataStores = require(script.Parent.Parent);
+local events = script.Parent.Parent.Events;
 
 
 local request = events.Request;
