@@ -6,6 +6,7 @@
 
 ]]
 
+
 local Signal = {}
 Signal.__index = Signal
 Signal.ClassName = "Signal"
