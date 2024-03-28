@@ -9,49 +9,54 @@
 			"Revared": {
 				"$className": "ModuleScript",
 				"$path": "Revared/Main",
-				
-				"Server": {
-					"$className": "ModuleScript",
-					"$path": "Revared/Server",
-					
-					"Events": {
-						"$className": "Folder",
-
-						"Out": { "$className": "RemoteEvent" },
-						"Post": { "$className": "RemoteEvent" },
-						"Request": { "$className": "RemoteEvent" }
-					}
-				},
 
 
-				"Trigger": {
-					"$className": "ModuleScript",
-					"$path": "Revared/Trigger",
+				"Services": {
+					"$className": "Folder",
 
-					"TriggerPlayerHandler": {
-						"$className": "Script",
-
-						"$properties": {
-							"RunContext": "Client"
-						},
+					"Server": {
+						"$className": "ModuleScript",
+						"$path": "Revared/Services/Server",
 						
-						"$path": "Revared/Trigger/TriggerPlayerHandler"
+						"Events": {
+							"$className": "Folder",
+	
+							"Out": { "$className": "RemoteEvent" },
+							"Post": { "$className": "RemoteEvent" },
+							"Request": { "$className": "RemoteEvent" }
+						}
 					},
-
-					"TriggerHandler": {
-						"$className": "Script",
-						
-						"$properties": {
-							"RunContext": "Client"
+	
+	
+					"Trigger": {
+						"$className": "ModuleScript",
+						"$path": "Revared/Services/Trigger",
+	
+						"TriggerPlayerHandler": {
+							"$className": "Script",
+	
+							"$properties": {
+								"RunContext": "Client"
+							},
+							
+							"$path": "Revared/Services/Trigger/TriggerPlayerHandler"
 						},
-						
-						"$path": "Revared/Trigger/TriggerHandler"
+	
+						"TriggerHandler": {
+							"$className": "Script",
+							
+							"$properties": {
+								"RunContext": "Client"
+							},
+							
+							"$path": "Revared/Services/Trigger/TriggerHandler"
+						}
+					},
+	
+					"Signal": {
+						"$className": "ModuleScript",
+						"$path": "Revared/Services/Signal"
 					}
-				},
-
-				"Signal": {
-					"$className": "ModuleScript",
-					"$path": "Revared/Signal"
 				}
 			}
 		}
