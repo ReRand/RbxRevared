@@ -2,7 +2,7 @@ local Trigger = {};
 Trigger.__index = Trigger;
 
 
-local functions = script.Functions
+local functions = script.Functions;
 
 
 local main = script.Parent.Parent;
@@ -102,7 +102,10 @@ function Trigger.new(triggerPart, triggerSettings)
 	
 	
 	local inEvent = Instance.new("RemoteEvent", Events);
-	inEvent.Name = "InEvent";	
+	inEvent.Name = "InEvent";
+
+	local referInEvent = Instance.new("BindableEvent", Events);
+	referInEvent.Name = "ReferInEvent";
 	
 	local outEvent = Instance.new("RemoteEvent", Events);
 	outEvent.Name = "OutEvent";
@@ -112,6 +115,7 @@ function Trigger.new(triggerPart, triggerSettings)
 
 
 	self._inEvent = inEvent;
+	self._referInEvent = referInEvent;
 	self._outEvent = outEvent;
 	self._playerHandler = playerHandler;
 
