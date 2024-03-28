@@ -1,3 +1,15 @@
+local function split(str, sep)
+    if sep == nil then sep = "%s" end
+    local spl = {};
+
+    for s in string.gmatch(str, "([^"..sep.."]+)") do
+        table.insert(spl, s);
+    end
+
+    return spl;
+end
+
+
 return (function(Revared)
 
     
