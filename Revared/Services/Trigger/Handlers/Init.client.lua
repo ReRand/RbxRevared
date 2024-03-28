@@ -4,10 +4,12 @@ local rep = game:GetService("ReplicatedStorage");
 local character = script.Parent.Parent.Parent;
 
 local id = script.Parent.Name;
+
 local inEvent = rep.TriggerEvents[id].InEvent;
-local referInEvent = rep.TriggerEvents[id].referInEvent;
 local outEvent = rep.TriggerEvents[id].OutEvent;
 
+local referInEvent = rep.TriggerEvents[id].referInEvent;
+local referOutEvent = rep.TriggerEvents[id].referOutEvent;
 
 local touchBoolean = false;
 
@@ -86,6 +88,7 @@ function Handle(partSects, id, triggerSettings)
 
 			touchBoolean = true;
 			outEvent:FireServer(1);
+			referOutEvent:Fire(1);
 
 		elseif (not IsTouching(triggerPart)) then
 			
