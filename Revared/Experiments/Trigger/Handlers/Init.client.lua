@@ -1,5 +1,5 @@
-local CollectionService = game:GetService("CollectionService");
 local RunService = game:GetService("RunService");
+local cs = game:GetService("CollectionService");
 local rep = game:GetService("ReplicatedStorage");
 
 local character = script.Parent.Parent.Parent;
@@ -20,21 +20,26 @@ function Handle(partSects, id, triggerSettings)
 	local TouchPart = nil;
 
 
-  local function getHitbox()
-      
-  end
+	local function getHitbox()
+		for _, part in pairs(character:GetChildren()) do
+			if cs:HasTag(part, id) then
+				return part;
+			end
+		end
+
+		return nil;
+	end
 	
 	
-	if (not character:FindFirstChild("TriggerHitbox") then
+	if (not getHitbox() then
 		TouchPart = Instance.new("Part", character);
 		TouchPart.Name = "TriggerHitbox";
 		TouchPart.Anchored = true;
 		TouchPart.CanCollide = false;
 		TouchPart.Size = Vector3.new(1, 1, 1);
 		TouchPart.Transparency = 1;
-
     
-    CollectionService:AddTag(TouchPart, id);
+    	cs:AddTag(TouchPart, id);
 
 
 		local offset = Instance.new("Vector3Value", TouchPart);
@@ -60,7 +65,7 @@ function Handle(partSects, id, triggerSettings)
 			end
 		end
 	else
-		TouchPart = character["TriggerHitbox?trigid="..id]
+		TouchPart = getHitbox();
 	end
 	
 	
@@ -86,7 +91,7 @@ function Handle(partSects, id, triggerSettings)
 
 		local function IsTouching(part)
 			for _, touchedPart in ipairs(GetParts()) do
-				if (touchedPart.name == part.name) then return true end
+				if cs:HasTag(touchedPart, id) then return true end
 			end
 
 			return false;
