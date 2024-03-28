@@ -82,7 +82,8 @@ function Trigger.new(triggerPart, triggerSettings)
     
 	
 	if (not workspace:FindFirstChild("TriggerPlayerHandler")) then
-		PlayerHandler = script.TriggerPlayerHandler:Clone();
+		PlayerHandler = script.Handlers.Player:Clone();
+		PlayerHandler.Name = "TriggerPlayerHandler";
 		PlayerHandler.Parent = workspace;
 	else
 		PlayerHandler = workspace:FindFirstChild("TriggerPlayerHandler");
@@ -95,7 +96,8 @@ function Trigger.new(triggerPart, triggerSettings)
 	Scripts.Name = id;
 	Events.Name = id;
 	
-	local TriggerHandler = script.TriggerHandler:Clone();
+	local TriggerHandler = script.Handlers.Init:Clone();
+	TriggerHandler.Name = "TriggerHandler";
 	TriggerHandler.Parent = Scripts;
 	
 	
