@@ -1,11 +1,11 @@
 {
-	"name": "RelKit",
+	"name": "Revared",
 	"tree": {
 		"$className": "DataModel",
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
-			"RelKit": {
-				"$path": "src/RelKit"
+			"Revared": {
+				"$path": "src/Revared"
 			}
 		}
 	}
