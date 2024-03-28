@@ -1,6 +1,6 @@
 local Revared = {};
 local services = script.Services;
-local functions = script.Functions
+local functions = script.Functions;
 
 
 for _, serv in pairs(services:GetChildren()) do
