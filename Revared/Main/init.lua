@@ -1,11 +1,30 @@
-local Revared = {};
+local Revared = {
+	Services = {},
+	Experiments = {}
+};
+
 local services = script.Services;
+local experiments = script.Experiments;
 local functions = script.Functions;
 
 
 for _, serv in pairs(services:GetChildren()) do
     if serv:IsA("ModuleScript") then
-        Revared[serv.Name] = require(serv);
+
+		local service = require(serv);
+		
+        Revared[serv.Name] = service;
+		Revared.Services[serv.Name] = service;
+    end
+end
+
+
+for _, exp in pairs(experiments:GetChildren()) do
+    if exp:IsA("ModuleScript") then
+
+		local experiment = require(exp);
+		
+		Revared.Experiments[experiment.Name] = experiment;
     end
 end
 
