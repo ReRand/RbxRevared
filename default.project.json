@@ -23,14 +23,14 @@
 				"Services": {
 					"$className": "Folder",
 
-					"DataStores": {
+					"LocalDataStores": {
 						"$className": "ModuleScript",
-						"$path": "Revared/Services/DataStores"
+						"$path": "Revared/Services/LocalDataStores"
 					},
 					
-					"Badges": {
+					"LocalBadges": {
 						"$className": "ModuleScript",
-						"$path": "Revared/Services/Badges"
+						"$path": "Revared/Services/LocalBadges"
 					},
 					
 					"Trigger": {
@@ -41,6 +41,11 @@
 					"Signal": {
 						"$className": "ModuleScript",
 						"$path": "Revared/Services/Signal"
+					},
+
+					"PingPong": {
+						"$className": "ModuleScript",
+						"$path": "Revared/Services/PingPong"
 					}
 				}
 			}
