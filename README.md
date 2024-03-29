@@ -6,3 +6,17 @@ An open source developer toolkit used in ReRand Roblox games
 - Signals
 - Directory fetcher
 - 
+
+```lua
+local Revared = require(workspace.Revared);
+local Trigger = Revared.Trigger;
+
+local triggerPart = script.Parent;
+
+local trigger = Trigger.new(triggerPart);
+
+trigger.Entered:Connect(function(character)
+
+end)
+
+```
