@@ -3,19 +3,17 @@ local clientEv = script.Parent.PingPong.Client;
 local GlobalSide = require(script.Parent.Parent.Parent.Parent);
 
 
-function healInit(victim, amount)
-	local victimHuman = victim:WaitForChild("Humanoid");
+local players = game.Players;
+local player = players.LocalPlayer;
 
-    local old = victimHuman.Health;
-    
-	if (victimHuman.Health + amount >= victimHuman.MaxHealth) then
-        amount = (victimHuman.MaxHealth - (VictimHuman.Health + amount))
-    end;
+
+function healInit(victim, new, old)
+	local victimHuman = victim:WaitForChild("Humanoid");
     
     
-	victimHuman.Health += amount;
-    GlobalSide.Healed.Client:Fire(victim, victimHuman.Health, old);
-    GlobalSide.Healed.Finally:Fire(victim, victimHuman.Health, old);
+	victimHuman.Health = new;
+    GlobalSide.Healed.Client:Fire(player, victim, new, old);
+    GlobalSide.Healed.Finally:Fire(victim, new, old);
 end
 
 
