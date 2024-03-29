@@ -1,7 +1,7 @@
 local Signal = require(script.Parent.Signal);
 
 
-local DataStores = {
+local LocalDataStores = {
     Types = {
         Request = 1,
         Post = 2,
@@ -17,7 +17,7 @@ local post = script.Events.Post;
 local out = script.Events.Out;
 
 
-function DataStores:Request(dataStore: string, keyOrScope: string, key)
+function LocalDataStores:Request(dataStore: string, keyOrScope: string, key)
     local scope = nil;
 
     if keyOrScope and not key then
@@ -33,15 +33,15 @@ function DataStores:Request(dataStore: string, keyOrScope: string, key)
     while task.wait() do
         local reqType, data = out.OnClientEvent:Wait();
 
-        if reqType == DataStores.Types.Request then
-            Data.Requested:Fire(data);
+        if reqType == LocalDataStores.Types.Request then
+            LocalDataStores.Requested:Fire(data);
             return data;
         end
     end
 end
 
 
-function DataStores:Post(dataStore: string, keyOrScope: string, keyOrData, data)
+function LocalDataStores:Post(dataStore: string, keyOrScope: string, keyOrData, data)
     local scope = nil;
     local key = nil;
 
@@ -62,11 +62,11 @@ function DataStores:Post(dataStore: string, keyOrScope: string, keyOrData, data)
         local reqType, data = out.OnClientEvent:Wait();
 
         if reqType == DataStores.Types.Post then
-            Data.Posted:Fire(data);
+            LocalDataStores.Posted:Fire(data);
             return data;
         end
     end
 end
 
 
-return DataStores;
+return LocalDataStores;
