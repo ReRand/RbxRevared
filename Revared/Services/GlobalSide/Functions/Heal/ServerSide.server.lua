@@ -19,7 +19,7 @@ function healInit(victim, amount)
     
 	victimHuman.Health += amount;
     GlobalSide.Healed.Server:Fire(victim, victimHuman.Health, old);
-	clientEv:FireAllClients(victim, amount);
+	clientEv:FireAllClients(victim, victimHuman.Health, old);
 end
 
 
