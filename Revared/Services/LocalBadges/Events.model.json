@@ -4,7 +4,7 @@
     "Children": [
         { "Name": "Out", "ClassName": "RemoteEvent" },
         { "Name": "Has", "ClassName": "RemoteEvent" },
-        { "Name": "Award", "ClassName": "RemoteEvent" },
+        { "Name": "Award", "ClassName": "RemoteEvent" }
     ]
     
 }
