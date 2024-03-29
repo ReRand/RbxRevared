@@ -1,7 +1,7 @@
 local DataStoreService = game:GetService("DataStoreService");
 
 local main = script.Parent.Parent.Parent;
-local DataStores = require(main);
+local LocalDataStores = require(main);
 local events = main.Events;
 
 
@@ -15,7 +15,7 @@ request.OnServerEvent:Connect(function(player, dataStore, scope, key)
 
     local data = store:GetAsync(tostring(key));
 
-    out:FireClient(player, DataStores.Types.Request, data);
+    out:FireClient(player, LocalDataStores.Types.Request, data);
 end);
 
 
@@ -24,5 +24,5 @@ post.OnServerEvent:Connect(function(player, dataStore, scope, key, data)
 
     store:SetAsync(tostring(key), data);
 
-    out:FireClient(player, DataStores.Types.Post, data);
+    out:FireClient(player, LocalDataStores.Types.Post, data);
 end);
