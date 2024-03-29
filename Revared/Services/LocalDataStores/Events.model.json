@@ -4,7 +4,7 @@
     "Children": [
         { "Name": "Out", "ClassName": "RemoteEvent" },
         { "Name": "Post", "ClassName": "RemoteEvent" },
-        { "Name": "Request", "ClassName": "RemoteEvent" },
+        { "Name": "Request", "ClassName": "RemoteEvent" }
     ]
     
 }
