@@ -15,7 +15,7 @@
 					"$className": "Folder",
 					"Trigger": {
 						"$className": "ModuleScript",
-						"$path": "Revared/Services/Trigger",
+						"$path": "Revared/Experiments/Trigger",
 					}
 				}
 				
