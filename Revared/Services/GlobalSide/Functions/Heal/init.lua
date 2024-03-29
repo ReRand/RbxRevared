@@ -16,6 +16,9 @@ return (function(GlobalSide)
 
         
 	function GlobalSide:Heal(victim, amount)
+		if victim:IsA("Humanoid") then victim = victim.Parent; end
+		elseif victim:IsA("Player") then victim = victim.Character or victim.CharacterAdded:Wait(); end
+			
 	    if server then
             referServerEv:Fire(victim, amount);
         elseif client then
