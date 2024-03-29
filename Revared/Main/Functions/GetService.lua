@@ -1,7 +1,7 @@
 return (function(Revared)
 
 	function Revared:GetService(serviceName: string)
-		return Revared[serviceName];
+		return Revared.Services[serviceName];
 	end
 
 end)
