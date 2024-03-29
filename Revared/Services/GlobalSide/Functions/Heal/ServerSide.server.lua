@@ -13,7 +13,7 @@ function healInit(victim, amount)
     local old = victimHuman.Health
     
 	if (victimHuman.Health + amount >= victimHuman.MaxHealth) then
-        amount = (victimHuman.MaxHealth - (VictimHuman.Health + amount))
+        amount = (victimHuman.MaxHealth - (victimHuman.Health + amount))
     end;
     
     
