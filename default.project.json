@@ -23,9 +23,9 @@
 				"Services": {
 					"$className": "Folder",
 
-					"Server": {
+					"DataStores": {
 						"$className": "ModuleScript",
-						"$path": "Revared/Services/Server",
+						"$path": "Revared/Services/DataStores",
 						
 						"Events": {
 							"$className": "Folder",
@@ -35,8 +35,20 @@
 							"Request": { "$className": "RemoteEvent" }
 						}
 					},
+					
+					"Badges": {
+						"$className": "ModuleScript",
+						"$path": "Revared/Services/Badges",
+						
+						"Events": {
+							"$className": "Folder",
 	
-	
+							"Out": { "$className": "RemoteEvent" },
+							"Post": { "$className": "RemoteEvent" },
+							"Request": { "$className": "RemoteEvent" }
+						}
+					},
+					
 					"Trigger": {
 						"$className": "ModuleScript",
 						"$path": "Revared/Services/Trigger"
