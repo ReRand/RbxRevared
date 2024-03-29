@@ -21,3 +21,11 @@ function healInit(victim, amount)
     GlobalSide.Healed.Server:Fire(victim, victimHuman.Health, old);
 	clientEv:FireAllClients(victim, amount);
 end
+
+
+serverEv:Connect(function(player, victim, amount)
+	healInit(victim, amount);		
+end)
+
+
+referServerEv.Event:Connect(healInit);
