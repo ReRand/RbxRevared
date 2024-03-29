@@ -1,14 +1,17 @@
+-- events
 local clientEv = script.PingPong.Client;
 local serverEv = script.PingPong.Server;
-
 local referServerEv = script.PingPong.ReferServer;
 
+
+-- run context
 local RunService = game:GetService("RunService");
 
 local client = RunService:IsClient();
 local server = RunService:IsServer();
 
 
+-- stuff
 return (function(GlobalSide)
 
         
