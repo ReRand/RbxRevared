@@ -1,12 +1,12 @@
-local PingPong = {};
+local GlobalSide = {};
 
 
 local functions = script.Functions;
 
 
 for _, f in ipairs(functions:GetChildren()) do
-	require(f)(PingPong);
+	require(f)(GlobalSide);
 end
 
 
-return PingPong;
+return GlobalSide;
