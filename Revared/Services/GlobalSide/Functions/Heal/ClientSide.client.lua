@@ -3,8 +3,7 @@ local clientEv = script.Parent.PingPong.Client;
 local GlobalSide = require(script.Parent.Parent.Parent.Parent);
 
 
-local players = game.Players;
-local player = players.LocalPlayer;
+local player = game.Players.LocalPlayer;
 
 
 function healInit(victim, new, old)
