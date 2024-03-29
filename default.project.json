@@ -43,9 +43,9 @@
 						"$path": "Revared/Services/Signal"
 					},
 
-					"PingPong": {
+					"GlobalSide": {
 						"$className": "ModuleScript",
-						"$path": "Revared/Services/PingPong"
+						"$path": "Revared/Services/GlobalSide"
 					}
 				}
 			}
