@@ -7,22 +7,22 @@
 
 
 local Revared = {
-	Services = {},
+	Modules = {},
 	Experiments = {}
 };
 
-local services = script.Services;
+local modules = script.Modules;
 local experiments = script.Experiments;
 local functions = script.Functions;
 
 
-for _, serv in pairs(services:GetChildren()) do
+for _, mod in pairs(modules:GetChildren()) do
     if serv:IsA("ModuleScript") then
 
-		local service = require(serv);
+		local module = require(mod);
 		
-        Revared[serv.Name] = service;
-		Revared.Services[serv.Name] = service;
+        Revared[mod.Name] = module;
+		Revared.Modules[mod.Name] = module;
     end
 end
 
