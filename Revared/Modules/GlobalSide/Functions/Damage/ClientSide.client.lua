@@ -1,6 +1,6 @@
 -- events
 local clientEv = script.Parent.PingPong.Client;
-local GlobalSide = require(script.Parent.Parent.Parent.Parent.Parent);
+local GlobalSide = require(script.Parent.Parent.Parent);
 
 
 local player = game.Players.LocalPlayer;
