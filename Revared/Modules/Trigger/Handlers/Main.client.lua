@@ -5,6 +5,7 @@ local rep = game:GetService("ReplicatedStorage");
 local character = script.Parent.Parent.Parent;
 
 local id = script.Parent.Name;
+local tag = "Trigger?"..tostring(id)
 
 local inEvent = rep.TriggerEvents[id].InEvent;
 local outEvent = rep.TriggerEvents[id].OutEvent;
@@ -39,7 +40,7 @@ function Handle(partSects, id, triggerSettings)
 		TouchPart.Size = Vector3.new(1, 1, 1);
 		TouchPart.Transparency = 1;
     
-    	cs:AddTag(TouchPart, id);
+		cs:AddTag(TouchPart, tag);
 
 
 		local offset = Instance.new("Vector3Value", TouchPart);
@@ -91,7 +92,7 @@ function Handle(partSects, id, triggerSettings)
 
 		local function IsTouching(part)
 			for _, touchedPart in ipairs(GetParts()) do
-				if cs:HasTag(touchedPart, id) then return true end
+				if cs:HasTag(touchedPart, tag) then return true end
 			end
 
 			return false;
