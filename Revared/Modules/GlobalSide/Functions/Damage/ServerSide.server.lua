@@ -28,6 +28,7 @@ function dmgInit(victim, amount)
 	
     GlobalSide.Damaged.Server:Fire(res);
 	clientEv:FireAllClients(victim, amount, new, old);
+	GlobalSide.Damaged.Finally:Fire(res);
 end
 
 
