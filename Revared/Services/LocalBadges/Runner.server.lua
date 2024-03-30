@@ -13,7 +13,7 @@ local out = events.Out;
 award.OnServerEvent:Connect(function(initPlayer, badgeId, receiver)
     BadgeService:AwardBadge(receiver.UserId, badgeId);
 
-    out:FireClient(player, LocalBadges.Types.Award, receiver);
+    out:FireClient(receiver, LocalBadges.Types.Award, receiver);
 end);
 
 
