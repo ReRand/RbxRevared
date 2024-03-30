@@ -21,7 +21,7 @@ function dmgInit(victim, amount)
 	local res = {
 			Vicitm = victim, 
 			Amount = amount,
-			NewHealth = new,
+			NewHealth = victimHuman.Health,
 			OldHealth = old
 	};
 	
