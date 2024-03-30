@@ -3,49 +3,43 @@
 	
 	"tree": {
 		"$className": "DataModel",
-		"ReplicatedStorage": {
-			"$className": "ReplicatedStorage",
+		
+		"Workspace": {
+			"$className": "Workspace",
 			
 			"Revared": {
-				"$className": "ModuleScript",
 				"$path": "Revared/Main",
 
 
 				"Experiments": {
 					"$className": "Folder",
 					"Trigger": {
-						"$className": "ModuleScript",
 						"$path": "Revared/Experiments/Trigger"
 					}
 				},
 				
 
-				"Services": {
+				"Modules": {
 					"$className": "Folder",
 
 					"LocalDataStores": {
-						"$className": "ModuleScript",
-						"$path": "Revared/Services/LocalDataStores"
+						"$path": "Revared/Modules/LocalDataStores"
 					},
 					
 					"LocalBadges": {
-						"$className": "ModuleScript",
-						"$path": "Revared/Services/LocalBadges"
+						"$path": "Revared/Modules/LocalBadges"
 					},
 					
 					"Trigger": {
-						"$className": "ModuleScript",
-						"$path": "Revared/Services/Trigger"
+						"$path": "Revared/Modules/Trigger"
 					},
 	
 					"Signal": {
-						"$className": "ModuleScript",
-						"$path": "Revared/Services/Signal"
+						"$path": "Revared/Modules/Signal"
 					},
 
 					"GlobalSide": {
-						"$className": "ModuleScript",
-						"$path": "Revared/Services/GlobalSide"
+						"$path": "Revared/Modules/GlobalSide"
 					}
 				}
 			}
