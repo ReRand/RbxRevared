@@ -1,6 +1,6 @@
 local BadgeService = game:GetService("BadgeService");
 
-local main = script.Parent.Parent.Parent;
+local main = script.Parent;
 local LocalBadges = require(main);
 local events = main.Events;
 
