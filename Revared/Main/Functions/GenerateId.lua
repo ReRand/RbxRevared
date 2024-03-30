@@ -28,6 +28,8 @@ return (function(Revared)
         for i=1, length do
             id[i] = characters[math.random(1, #characters)];
         end
+
+		return tostring(table.concat(id));
     end
 
     
