@@ -17,16 +17,17 @@ function dmgInit(victim, amount)
     end
     
 	victimHuman.Health -= amount;
+	local new = victimHuman.Health
 
 	local res = {
 			Vicitm = victim, 
 			Amount = amount,
-			NewHealth = victimHuman.Health,
+			NewHealth = new,
 			OldHealth = old
 	};
 	
     GlobalSide.Healed.Server:Fire(res);
-	clientEv:FireAllClients(victim, victimHuman.Health, old);
+	clientEv:FireAllClients(victim, amount, new, old);
 end
 
 
