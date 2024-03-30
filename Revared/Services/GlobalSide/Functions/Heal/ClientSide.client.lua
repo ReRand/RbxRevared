@@ -6,7 +6,7 @@ local GlobalSide = require(script.Parent.Parent.Parent.Parent);
 local player = game.Players.LocalPlayer;
 
 
-function healInit(victim, amount new, old)
+function healInit(victim, amount, new, old)
 	local victimHuman = victim:WaitForChild("Humanoid");
     
 	victimHuman.Health = new;
