@@ -2,10 +2,10 @@
 
 An open source developer toolkit used in ReRand Roblox games
 - Advanced Triggers
-- Client badges and data stores
-- Global sided values
+- Client-side badges and data stores
+- Global-side values
 - Custom Script Signals
-- Directory fetcher
+- Directory fetching
 
 <br>
 
@@ -14,7 +14,7 @@ local Revared = require(workspace.Revared);
 
 
 local Trigger = Revared:GetModule("Trigger"); -- gets the trigger module
-local GlobalSide = Revared:GetModule("GlobalSide"); -- gets the global sided values module
+local GlobalSide = Revared:GetModule("GlobalSide"); -- gets the global-sided values module
 
 
 local triggerPart = script.Parent;
