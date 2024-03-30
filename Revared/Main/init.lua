@@ -40,7 +40,7 @@ for _, exp in pairs(experiments:GetChildren()) do
 			experiment:Init(Revared);
 		end
 		
-		Revared.Experiments[experiment.Name] = experiment;
+		Revared.Experiments[exp.Name] = experiment;
     end
 end
 
