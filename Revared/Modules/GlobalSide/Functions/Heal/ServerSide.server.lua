@@ -32,7 +32,7 @@ function healInit(victim, amount)
 end
 
 
-serverEv:Connect(function(player, victim, amount)
+serverEv.OnServerEvent:Connect(function(player, victim, amount)
 	healInit(victim, amount);		
 end)
 
