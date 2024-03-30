@@ -31,7 +31,7 @@ function dmgInit(victim, amount)
 end
 
 
-serverEv:Connect(function(player, victim, amount)
+serverEv.OnServerEvent:Connect(function(player, victim, amount)
 	dmgInit(victim, amount);		
 end)
 
