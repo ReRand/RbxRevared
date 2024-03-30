@@ -26,7 +26,7 @@ function Trigger.new(triggerPart, triggerSettings)
 	local partId = _G.Revared:GenerateId();
 	triggerPart.Transparency = 1;
 	
-	local tag = "Trigger?"..tostring(id);
+	local tag = "Trigger?id="..tostring(id);
 	cs:AddTag(triggerPart, tag);
 
 	local Enabled = Instance.new("BoolValue", triggerPart);
