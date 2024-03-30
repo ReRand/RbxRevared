@@ -21,6 +21,10 @@ for _, mod in pairs(modules:GetChildren()) do
 
 		local module = require(mod);
 		
+		if module["Init"] then
+			module:Init(Revared);
+		end
+		
         Revared[mod.Name] = module;
 		Revared.Modules[mod.Name] = module;
     end
@@ -31,6 +35,10 @@ for _, exp in pairs(experiments:GetChildren()) do
     if exp:IsA("ModuleScript") then
 
 		local experiment = require(exp);
+		
+		if experiment["Init"] then
+			experiment:Init(Revared);
+		end
 		
 		Revared.Experiments[experiment.Name] = experiment;
     end
