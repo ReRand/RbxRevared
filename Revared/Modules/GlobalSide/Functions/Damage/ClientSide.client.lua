@@ -1,5 +1,6 @@
 -- events
 local clientEv = script.Parent.PingPong.Client;
+local finalEv = script.Parent.PingPong.Finally;
 local GlobalSide = require(script.Parent.Parent.Parent);
 
 
@@ -19,7 +20,9 @@ function dmgInit(victim, amount, new, old)
 	};
 	
     GlobalSide.Damaged.Client:Fire(player, res);
-    GlobalSide.Damaged.Finally:Fire(res);
+    
+	GlobalSide.Damaged.Finally:Fire(res);
+	finalEv:FireServer(res);
 end
 
 
