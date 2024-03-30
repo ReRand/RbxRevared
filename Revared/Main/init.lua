@@ -17,7 +17,7 @@ local functions = script.Functions;
 
 
 for _, mod in pairs(modules:GetChildren()) do
-    if serv:IsA("ModuleScript") then
+    if mod:IsA("ModuleScript") then
 
 		local module = require(mod);
 		
