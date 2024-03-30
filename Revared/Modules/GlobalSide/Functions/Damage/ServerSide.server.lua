@@ -13,7 +13,7 @@ function dmgInit(victim, amount)
     local old = victimHuman.Health
     
 	if (victimHuman.Health - amount < 0) then
-        amount = amount - math.abs(victimHuman.Health - amount))
+        amount = amount - math.abs((victimHuman.Health - amount))
     end
     
 	victimHuman.Health -= amount;
