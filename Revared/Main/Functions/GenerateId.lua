@@ -25,7 +25,7 @@ return (function(Revared)
             characters = split("1234567890");
         end
     
-        for i=1, length od
+        for i=1, length do
             id[i] = characters[math.random(1, #characters)];
         end
     end
