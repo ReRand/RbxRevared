@@ -5,7 +5,7 @@ local rep = game:GetService("ReplicatedStorage");
 local character = script.Parent.Parent.Parent;
 
 local id = script.Parent.Name;
-local tag = "Trigger?"..tostring(id)
+local tag = "Trigger?id="..tostring(id);
 
 local inEvent = rep.TriggerEvents[id].InEvent;
 local outEvent = rep.TriggerEvents[id].OutEvent;
