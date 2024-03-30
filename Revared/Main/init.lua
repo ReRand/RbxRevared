@@ -2,7 +2,7 @@
 	== Revared: ReRand Game ToolKit ==
 	Created by Paige "paishee" Sheffield
 
-	https://gitub.com/paishee/RbxRevared
+	https://gitub.com/ReRand/RbxRevared
 ]]
 
 
