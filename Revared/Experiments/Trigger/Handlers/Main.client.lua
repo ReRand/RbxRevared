@@ -33,7 +33,7 @@ function Handle(partSects, id, triggerSettings)
 	
 	if (not getHitbox()) then
 		TouchPart = Instance.new("Part", character);
-		TouchPart.Name = "TriggerHitbox";
+		TouchPart.Name = "PlayerTriggerHitbox";
 		TouchPart.Anchored = true;
 		TouchPart.CanCollide = false;
 		TouchPart.Size = Vector3.new(1, 1, 1);
