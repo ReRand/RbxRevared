@@ -1,5 +1,6 @@
 -- events
 local clientEv = script.Parent.PingPong.Client;
+local finalEv = script.Parent.PingPong.Finally;
 local GlobalSide = require(script.Parent.Parent.Parent);
 
 
@@ -19,7 +20,9 @@ function healInit(victim, amount, new, old)
 	};
 	
     GlobalSide.Healed.Client:Fire(player, res);
+	
     GlobalSide.Healed.Finally:Fire(res);
+	finalEv:FireServer(res);
 end
 
 
