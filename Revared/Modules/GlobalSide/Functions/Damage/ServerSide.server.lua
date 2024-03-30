@@ -4,7 +4,7 @@ local serverEv = script.Parent.PingPong.Server;
 local referServerEv = script.Parent.PingPong.ReferServer;
 
 
-local GlobalSide = require(script.Parent.Parent.Parent.Parent);
+local GlobalSide = require(script.Parent.Parent.Parent.Parent.Parent);
 
 
 function dmgInit(victim, amount)
