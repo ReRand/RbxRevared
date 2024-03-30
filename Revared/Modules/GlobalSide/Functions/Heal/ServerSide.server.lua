@@ -2,6 +2,7 @@
 local clientEv = script.Parent.PingPong.Client;
 local serverEv = script.Parent.PingPong.Server;
 local referServerEv = script.Parent.PingPong.ReferServer;
+local finalEv = script.Parent.PingPong.Finally;
 
 local GlobalSide = require(script.Parent.Parent.Parent);
 
@@ -33,6 +34,11 @@ end
 
 serverEv.OnServerEvent:Connect(function(player, victim, amount)
 	healInit(victim, amount);		
+end)
+
+
+finalEv.OnServerEvent:Connect(function(res)
+	GlobalSide.Damaged.Finally:Fire(res);	
 end)
 
 
