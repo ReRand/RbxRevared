@@ -1,7 +1,4 @@
-local Revared = require(script.Parent.Parent.Parent.Parent);
-
-
-return (function(Trigger)
+return (function(Trigger, Revared)
 
     
 	function Trigger:Activate()
