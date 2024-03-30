@@ -50,4 +50,4 @@ function LocalBadges:Has(badgeId, player)
 
 
 
-return DataStores;
+return LocalBadges;
