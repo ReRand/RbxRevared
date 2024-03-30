@@ -61,7 +61,7 @@ function LocalDataStores:Post(dataStore: string, keyOrScope: string, keyOrData, 
     while task.wait() do
         local reqType, data = out.OnClientEvent:Wait();
 
-        if reqType == DataStores.Types.Post then
+        if reqType == LocalDataStores.Types.Post then
             LocalDataStores.Posted:Fire(data);
             return data;
         end
