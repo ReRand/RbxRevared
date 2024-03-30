@@ -1,4 +1,4 @@
-return (function(Trigger, Revared)
+return (function(Trigger)
 
     
 	function Trigger:Activate()
@@ -7,7 +7,7 @@ return (function(Trigger, Revared)
     		self.Running = true;
 
 
-            local dir = Revared:GetDirectoryOf(self.Part);
+            local dir = _G.Revared:GetDirectoryOf(self.Part);
     		
     		
     		local function ActivateServer()
