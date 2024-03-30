@@ -26,7 +26,7 @@ function dmgInit(victim, amount)
 			OldHealth = old
 	};
 	
-    GlobalSide.Healed.Server:Fire(res);
+    GlobalSide.Damaged.Server:Fire(res);
 	clientEv:FireAllClients(victim, amount, new, old);
 end
 
