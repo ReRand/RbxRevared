@@ -97,7 +97,7 @@ function Trigger.new(triggerPart, triggerSettings)
 	Scripts.Name = id;
 	Events.Name = id;
 
-	local TriggerHandler = script.Handlers.Init:Clone();
+	local TriggerHandler = script.Handlers.Main:Clone();
 	TriggerHandler.Name = "TriggerHandler";
 	TriggerHandler.Parent = Scripts;
 
