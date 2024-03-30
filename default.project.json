@@ -12,10 +12,7 @@
 
 
 				"Experiments": {
-					"$className": "Folder",
-					"Trigger": {
-						"$path": "Revared/Experiments/Trigger"
-					}
+					"$className": "Folder"
 				},
 				
 
