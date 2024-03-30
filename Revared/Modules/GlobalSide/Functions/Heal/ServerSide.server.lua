@@ -3,8 +3,7 @@ local clientEv = script.Parent.PingPong.Client;
 local serverEv = script.Parent.PingPong.Server;
 local referServerEv = script.Parent.PingPong.ReferServer;
 
-
-local GlobalSide = require(script.Parent.Parent.Parent.Parent.Parent);
+local GlobalSide = require(script.Parent.Parent.Parent);
 
 
 function healInit(victim, amount)
