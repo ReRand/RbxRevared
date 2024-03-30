@@ -10,10 +10,11 @@ An open source developer toolkit used in ReRand Roblox games
 ```lua
 local Revared = require(workspace.Revared);
 local Trigger = Revared:GetModule("Trigger");
-
 local triggerPart = script.Parent;
 
+
 local trigger = Trigger.new(triggerPart);
+
 
 trigger.Entered:Connect(function(character)
 
