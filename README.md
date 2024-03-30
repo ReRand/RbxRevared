@@ -3,7 +3,7 @@
 An open source developer toolkit used in ReRand Roblox games
 - Advanced Triggers
 - Client-side badges and data stores
-- Global-side values
+- Global-side stuff
 - Custom Script Signals
 - Directory fetching
 
