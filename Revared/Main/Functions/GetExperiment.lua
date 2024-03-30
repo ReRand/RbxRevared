@@ -1,7 +1,7 @@
 return (function(Revared)
 
 	function Revared:GetExperiment(experimentName: string)
-		return Revared.Experiment[experimentName];
+		return Revared.Experiments[experimentName];
 	end
 
 end)
