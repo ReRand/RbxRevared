@@ -2,6 +2,7 @@
 local clientEv = script.Parent.PingPong.Client;
 local serverEv = script.Parent.PingPong.Server;
 local referServerEv = script.Parent.PingPong.ReferServer;
+local finalEv = script.Parent.PingPong.Finally;
 
 
 local GlobalSide = require(script.Parent.Parent.Parent);
@@ -28,12 +29,16 @@ function dmgInit(victim, amount)
 	
     GlobalSide.Damaged.Server:Fire(res);
 	clientEv:FireAllClients(victim, amount, new, old);
-	GlobalSide.Damaged.Finally:Fire(res);
 end
 
 
 serverEv.OnServerEvent:Connect(function(player, victim, amount)
 	dmgInit(victim, amount);		
+end)
+
+
+finalEv.OnServerEvent:Connect(function(res)
+	GlobalSide.Damaged.Finally:Fire(res);	
 end)
 
 
