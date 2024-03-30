@@ -16,7 +16,7 @@ return (function(GlobalSide)
 
         
 	function GlobalSide:Heal(victim, amount)
-		if victim:IsA("Humanoid") then victim = victim.Parent; end
+		if victim:IsA("Humanoid") then victim = victim.Parent;
 		elseif victim:IsA("Player") then victim = victim.Character or victim.CharacterAdded:Wait(); end
 			
 	    if server then
