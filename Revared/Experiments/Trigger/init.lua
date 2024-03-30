@@ -1,117 +1,137 @@
-local RunService = game:GetService("RunService");
-local cs = game:GetService("CollectionService");
-local rep = game:GetService("ReplicatedStorage");
-
-local character = script.Parent.Parent.Parent;
-
-local id = script.Parent.Name;
-
-local inEvent = rep.TriggerEvents[id].InEvent;
-local outEvent = rep.TriggerEvents[id].OutEvent;
-
-local referInEvent = rep.TriggerEvents[id].referInEvent;
-local referOutEvent = rep.TriggerEvents[id].referOutEvent;
-
-local touchBoolean = false;
+local Trigger = {};
+Trigger.__index = Trigger;
 
 
-function Handle(partSects, id, triggerSettings)
-	
-	local TouchPart = nil;
+local functions = script.Functions;
 
 
-	local function getHitbox()
-		for _, part in pairs(character:GetChildren()) do
-			if cs:HasTag(part, id) then
-				return part;
-			end
-		end
+local main = script.Parent.Parent;
+local Revared = nil;
 
-		return nil;
+
+function Trigger:Init(Revared)
+	Revared = Revared;
+	for _, f in ipairs(functions:GetChildren()) do
+		require(f)(Trigger, Revared);
 	end
-	
-	
-	if (not getHitbox()) then
-		TouchPart = Instance.new("Part", character);
-		TouchPart.Name = "TriggerHitbox";
-		TouchPart.Anchored = true;
-		TouchPart.CanCollide = false;
-		TouchPart.Size = Vector3.new(1, 1, 1);
-		TouchPart.Transparency = 1;
-    
-    	cs:AddTag(TouchPart, id);
-
-
-		local offset = Instance.new("Vector3Value", TouchPart);
-		offset.Name = "Offset";
-		
-		
-		local TouchConnection = TouchPart.Touched:Connect(function() end);
-		
-		
-		if (triggerSettings) then
-			if (triggerSettings.Hitbox) then
-				for name, setting in ipairs(triggerSettings.Hitbox) do
-					TouchPart[name] = setting;
-				end
-			end
-
-			if (triggerSettings.Offset) then
-				offset.Value = triggerSettings.Offset;
-			end
-
-			if (triggerSettings.Size) then
-				TouchPart.Size = triggerSettings.Size;
-			end
-		end
-	else
-		TouchPart = getHitbox();
-	end
-	
-	
-	RunService.RenderStepped:Connect(function()
-		local triggerPart = game;
-
-
-		for _, child in ipairs(partSects) do
-			triggerPart = triggerPart[child];
-		end
-
-
-		local function GetParts()
-			local HumanoidRootPart = character:FindFirstChild("HumanoidRootPart");
-
-			if HumanoidRootPart then
-				TouchPart.CFrame = HumanoidRootPart.CFrame + TouchPart.Offset.Value;
-				return TouchPart:GetTouchingParts();
-			end
-		end
-
-
-
-		local function IsTouching(part)
-			for _, touchedPart in ipairs(GetParts()) do
-				if cs:HasTag(touchedPart, id) then return true end
-			end
-
-			return false;
-		end
-		
-		
-		if (IsTouching(triggerPart) and not touchBoolean and triggerPart.TriggerEnabled.Value) then
-
-			touchBoolean = true;
-			outEvent:FireServer(1);
-			referOutEvent:Fire(1);
-
-		elseif (not IsTouching(triggerPart)) then
-			
-			if (touchBoolean) then outEvent:FireServer(2) end
-			touchBoolean = false;
-		end
-	end);
 end
 
 
-inEvent.OnClientEvent:Connect(Handle);
-referInEvent.Event:Connect(Handle);
+local Signal = script.Parent.Parent.Modules.Signal -- require(script.Parent.Signal);
+local sp = game:GetService("StarterPlayer");
+local rep = game:GetService("ReplicatedStorage");
+local rs = game:GetService("RunService");
+local cs = game:GetService("CollectionService");
+
+
+function Trigger.new(triggerPart, triggerSettings)
+	local id = Revared:GenerateId();
+	local partId = Revared:GenerateId();
+	triggerPart.Transparency = 1;
+	
+	cs:AddTag(triggerPart, tostring(id));
+
+	local Enabled = Instance.new("BoolValue", triggerPart);
+	Enabled.Name = "TriggerEnabled";
+	Enabled.Value = true;
+
+
+	-- trigger data
+	local self = setmetatable({
+
+		-- basic data
+		Id = id,
+		PartId = partId,
+		PartName = triggerPart.Name,
+		Part = triggerPart,
+		Settings = triggerSettings,
+		Enabled = Enabled,
+		Running = false,
+
+		-- events
+		Entered = Signal.new(),
+		Exited = Signal.new()
+
+	}, Trigger);
+
+
+	if triggerSettings then
+		if triggerSettings.PartTransparency then
+			triggerPart.Transparency = triggerSettings.PartTransparency;
+		end
+	end
+
+
+	local scs = sp.StarterCharacterScripts;
+	local ScriptFolders = nil;
+	local PartFolders = nil;
+	local EventFolders = nil;
+	local PlayerHandler = nil;
+
+
+	if not scs:FindFirstChild("TriggerScripts") then
+		ScriptFolders = Instance.new("Folder", scs);
+		ScriptFolders.Name = "TriggerScripts";
+	else
+		ScriptFolders = scs:FindFirstChild("TriggerScripts");
+	end
+
+
+	if (not rep:FindFirstChild("TriggerEvents")) then
+		EventFolders = Instance.new("Folder", rep);
+		EventFolders.Name = "TriggerEvents";
+	else
+		EventFolders = rep:FindFirstChild("TriggerEvents");
+	end
+
+
+	if (not workspace:FindFirstChild("TriggerPlayerHandler")) then
+		PlayerHandler = script.Handlers.Player:Clone();
+		PlayerHandler.Name = "TriggerPlayerHandler";
+		PlayerHandler.Parent = workspace;
+	else
+		PlayerHandler = workspace:FindFirstChild("TriggerPlayerHandler");
+	end
+
+
+	local Scripts = Instance.new("Folder", ScriptFolders);
+	local Events = Instance.new("Folder", EventFolders);
+
+	Scripts.Name = id;
+	Events.Name = id;
+
+	local TriggerHandler = script.Handlers.Init:Clone();
+	TriggerHandler.Name = "TriggerHandler";
+	TriggerHandler.Parent = Scripts;
+
+
+	local inEvent = Instance.new("RemoteEvent", Events);
+	inEvent.Name = "InEvent";
+	local outEvent = Instance.new("RemoteEvent", Events);
+	outEvent.Name = "OutEvent";
+
+
+	local referInEvent = Instance.new("BindableEvent", Events);
+	referInEvent.Name = "ReferInEvent";
+	local referOutEvent = Instance.new("BindableEvent", Events);
+	referOutEvent.Name = "ReferOutEvent";
+
+
+	local playerHandler = Instance.new("RemoteEvent", EventFolders);
+	playerHandler.Name = "PlayerHandler";
+
+
+	self._inEvent = inEvent;
+	self._outEvent = outEvent;
+
+	self._referInEvent = referInEvent;
+	self._referOutEvent = referOutEvent;
+
+	self._playerHandler = playerHandler;
+
+
+	return self;
+end
+
+
+return Trigger;
