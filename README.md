@@ -16,6 +16,7 @@ local triggerPart = script.Parent;
 
 
 local trigger = Trigger.new(triggerPart);
+trigger:Visualize();
 
 
 trigger.Entered:Connect(function(character)
@@ -28,4 +29,7 @@ trigger.Exited:Connect(function(character)
     print("exited");
     GlobalSide:Heal(character, 50);
 end)
+
+
+trigger:Activate();
 ```
