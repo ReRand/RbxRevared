@@ -6,18 +6,21 @@ local functions = script.Functions;
 
 
 local main = script.Parent.Parent;
-local Revared = require(main);
+local Revared = nil;
+
+
+function Trigger:Init(Revared)
+	Revared = Revared;
+	for _, f in ipairs(functions:GetChildren()) do
+		require(f)(Trigger, Revared);
+	end
+end
 
 
 local Signal = require(script.Parent.Signal);
 local sp = game:GetService("StarterPlayer");
 local rep = game:GetService("ReplicatedStorage");
 local rs = game:GetService("RunService");
-
-
-for _, f in ipairs(functions:GetChildren()) do
-	require(f)(Trigger);
-end
 
 
 function Trigger.new(triggerPart, triggerSettings)
