@@ -11,43 +11,53 @@ local Revared = {
 	Experiments = {}
 };
 
-local modules = script.Modules;
-local experiments = script.Experiments;
-local functions = script.Functions;
 
 
-for _, mod in pairs(modules:GetChildren()) do
-    if mod:IsA("ModuleScript") then
+local modules = script:FindFirstChild("Modules");
+local experiments = script:FindFirstChild("Experiments");
+local functions = script:FindFirstChild("Functions");
 
-		local module = require(mod);
-		
-		if module["Init"] then
-			module:Init(Revared);
-		end
-		
-        Revared[mod.Name] = module;
-		Revared.Modules[mod.Name] = module;
-    end
+
+
+if modules then
+	for _, mod in pairs(modules:GetChildren()) do
+	    if mod:IsA("ModuleScript") then
+			local module = require(mod);
+			
+			if module["Init"] then
+				module:Init(Revared);
+			end
+			
+	        Revared[mod.Name] = module;
+			Revared.Modules[mod.Name] = module;
+	    end
+	end
 end
 
 
-for _, exp in pairs(experiments:GetChildren()) do
-    if exp:IsA("ModuleScript") then
 
-		local experiment = require(exp);
-		
-		if experiment["Init"] then
-			experiment:Init(Revared);
-		end
-		
-		Revared.Experiments[exp.Name] = experiment;
-    end
+if experiments then
+	for _, exp in pairs(experiments:GetChildren()) do
+	    if exp:IsA("ModuleScript") then
+			local experiment = require(exp);
+			
+			if experiment["Init"] then
+				experiment:Init(Revared);
+			end
+			
+			Revared.Experiments[exp.Name] = experiment;
+	    end
+	end
 end
 
 
-for _, f in ipairs(functions:GetChildren()) do
-	require(f)(Revared);
+
+if functions then
+	for _, f in ipairs(functions:GetChildren()) do
+		require(f)(Revared);
+	end
 end
+
 
 
 return Revared;
