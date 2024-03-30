@@ -7,6 +7,7 @@ An open source developer toolkit used in ReRand Roblox games
 - Custom Script Signals
 - Directory fetcher
 
+<br><br>
 
 ```lua
 local Revared = require(workspace.Revared);
