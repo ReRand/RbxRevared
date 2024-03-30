@@ -20,8 +20,6 @@ return (function(Revared)
 		end
 		
 		characters = split(characters);
-		
-		print(characters);
 
 		for i=1, length do
 			id[i] = characters[math.random(1, #characters)];
