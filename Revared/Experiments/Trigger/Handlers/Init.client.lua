@@ -31,7 +31,7 @@ function Handle(partSects, id, triggerSettings)
 	end
 	
 	
-	if (not getHitbox() then
+	if (not getHitbox()) then
 		TouchPart = Instance.new("Part", character);
 		TouchPart.Name = "TriggerHitbox";
 		TouchPart.Anchored = true;
