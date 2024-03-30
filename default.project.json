@@ -3,8 +3,8 @@
 	
 	"tree": {
 		"$className": "DataModel",
-		"workspace": {
-			"$className": "Workspace",
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
 			
 			"Revared": {
 				"$className": "ModuleScript",
