@@ -1,6 +1,19 @@
-Enum["MoveDirection"] = {};
+local RevaEnum = _G.Revared:GetModule("RevaEnum");
 
-Enum["MoveDirection"]["Left"] = 1;
+RevaEnum.new("MoveDirection", {
+    "Left", "Right",
+    "Forward", "Backward", 
+    "Up", "Down",
+});
+
+
+local MoveDirection = {};
+MoveDirection.__index = MoveDirection;
+
+
+function MoveDirection.new()
+end
+
 
 
 return (function(PlayerControls)
