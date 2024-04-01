@@ -14,6 +14,9 @@ RevaEnum.new("MoveDirection", {
 local md = PlayerControls:GetMoveDirection(player);
 
 
+print(md.Directions); // { Enum.MoveDirection.Forward, Enum.MoveDirection.Right };
+
+
 if md:MovingIn(Enum.MoveDirection.Forward) and md:VelocityIn(Enum.MoveDirection.Forward) > 25 then
  -- do stuff
 end
