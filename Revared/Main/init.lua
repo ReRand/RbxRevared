@@ -11,6 +11,9 @@ local Revared = {
 };
 
 
+local settings = script.Settings;
+
+
 local modules = script.Modules;
 local functions = script.Functions;
 
@@ -30,7 +33,7 @@ for _, mod in pairs(modules:GetChildren()) do
 end
 
 
-if script.Experiments.Value then
+if settings.Experiments.Value then
 	local experiments = script.Experiments;
 	Revared.Experiments = {}
 	
