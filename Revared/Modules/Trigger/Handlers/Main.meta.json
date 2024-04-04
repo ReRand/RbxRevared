@@ -1,6 +1,7 @@
 {
     "className": "Script",
     "properties": {
-        "RunContext": "Client"
+        "RunContext": "Client",
+        "Enabled": false
     }
 }
