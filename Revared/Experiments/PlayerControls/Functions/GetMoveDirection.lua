@@ -1,12 +1,3 @@
-local RevaEnum = _G.Revared:GetExperiment("RevaEnum"); -- _G.Revared:GetModule("RevaEnum")
-
-RevaEnum.new("MoveDirection", {
-    "Left", "Right",
-    "Forward", "Backward", 
-    "Up", "Down",
-});
-
-
 local MoveDirection = {};
 MoveDirection.__index = MoveDirection;
 
