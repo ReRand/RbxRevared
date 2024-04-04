@@ -1,10 +1,14 @@
-local Trigger = {};
+local Trigger = {
+	OutTypes = {
+		Entered = 1;
+		Exited = 2;
+	}
+};
+
 Trigger.__index = Trigger;
 
 
 local functions = script.Functions;
-
-
 local main = script.Parent.Parent;
 
 
@@ -25,7 +29,7 @@ function Trigger.new(triggerPart, triggerSettings)
 	local id = _G.Revared:GenerateId();
 	local partId = _G.Revared:GenerateId();
 	triggerPart.Transparency = 1;
-	
+
 	local tag = "Trigger?id="..tostring(id);
 	cs:AddTag(triggerPart, tag);
 
@@ -49,7 +53,9 @@ function Trigger.new(triggerPart, triggerSettings)
 
 		-- events
 		Entered = Signal.new(),
-		Exited = Signal.new()
+		Exited = Signal.new(),
+		Activated = Signal.new(),
+		Deactivated = Signal.new()
 
 	}, Trigger);
 
