@@ -35,38 +35,38 @@ RevaEnumItem.__index = RevaEnumItem;
 
 -- enum item
 function RevaEnumItem.new(name: string, value: number, et: RevaEnum)
-     local self = setmetatable({
-            Name = name,
-            Value = value,
-            EnumType = et
-     }, RevaEnumItem);
-    
-    return self;
+	local self = setmetatable({
+		Name = name,
+		Value = value,
+		EnumType = et
+	}, RevaEnumItem);
+
+	return self;
 end
 
 
 -- enum main
 function RevaEnum.new(name, items)
 	local self = setmetatable({
-            Name = name,
-            Items = items,
-            Me = nil
-    }, RevaEnum);
+		Name = name,
+		Items = items,
+		Me = nil
+	}, RevaEnum);
 
-    Enum[name] = self;
-    self.Me = Enum[name];
+	Enum[name] = self;
+	self.Me = Enum[name];
 
-    for itemValue, itemName in ipairs(self.Items) do
-        self.Items[i] = RevaEnumItem.new(itemName, itemValue, self);
-    end
-    
+	for itemValue, itemName in ipairs(self.Items) do
+		self.Items[i] = RevaEnumItem.new(itemName, itemValue, self);
+	end
+
 	return self;
 end
 
 
 function RevaEnum:GetEnumItems()
-    return self.Items;
+	return self.Items;
 end
 
 
-return EnumObj
+return RevaEnum;
