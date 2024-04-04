@@ -1,23 +1,29 @@
+repeat task.wait() until game:IsLoaded();
+
 local RunService = game:GetService("RunService");
 local cs = game:GetService("CollectionService");
 local rep = game:GetService("ReplicatedStorage");
 
-local character = script.Parent.Parent.Parent;
+local player = game.Players.LocalPlayer;
+local character = player.Character or player.CharacterAdded:Wait();
 
 local id = script.Parent.Name;
 local tag = "Trigger?id="..tostring(id);
 
-local inEvent = rep.TriggerEvents[id].InEvent;
-local outEvent = rep.TriggerEvents[id].OutEvent;
+local events = rep:WaitForChild("TriggerEvents");
 
-local referInEvent = rep.TriggerEvents[id].ReferInEvent;
-local referOutEvent = rep.TriggerEvents[id].ReferOutEvent;
+local inEvent = events[id].InEvent;
+local outEvent = events[id].OutEvent;
+
+local referInEvent = events[id].ReferInEvent;
+local referOutEvent = events[id].ReferOutEvent;
+
 
 local touchBoolean = false;
 
 
 function Handle(partSects, id, triggerSettings)
-	
+
 	local TouchPart = nil;
 
 
@@ -30,8 +36,8 @@ function Handle(partSects, id, triggerSettings)
 
 		return nil;
 	end
-	
-	
+
+
 	if (not getHitbox()) then
 		TouchPart = Instance.new("Part", character);
 		TouchPart.Name = "PlayerTriggerHitbox";
@@ -39,17 +45,17 @@ function Handle(partSects, id, triggerSettings)
 		TouchPart.CanCollide = false;
 		TouchPart.Size = Vector3.new(1, 1, 1);
 		TouchPart.Transparency = 1;
-    
+
 		cs:AddTag(TouchPart, tag);
 
 
 		local offset = Instance.new("Vector3Value", TouchPart);
 		offset.Name = "Offset";
-		
-		
+
+
 		local TouchConnection = TouchPart.Touched:Connect(function() end);
-		
-		
+
+
 		if (triggerSettings) then
 			if (triggerSettings.Hitbox) then
 				for name, setting in ipairs(triggerSettings.Hitbox) do
@@ -68,8 +74,8 @@ function Handle(partSects, id, triggerSettings)
 	else
 		TouchPart = getHitbox();
 	end
-	
-	
+
+
 	RunService.RenderStepped:Connect(function()
 		local triggerPart = game;
 
@@ -97,8 +103,8 @@ function Handle(partSects, id, triggerSettings)
 
 			return false;
 		end
-		
-		
+
+
 		if (IsTouching(triggerPart) and not touchBoolean and triggerPart.TriggerEnabled.Value) then
 
 			touchBoolean = true;
@@ -106,7 +112,7 @@ function Handle(partSects, id, triggerSettings)
 			referOutEvent:Fire(1);
 
 		elseif (not IsTouching(triggerPart)) then
-			
+
 			if (touchBoolean) then outEvent:FireServer(2) end
 			touchBoolean = false;
 		end
