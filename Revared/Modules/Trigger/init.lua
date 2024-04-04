@@ -67,18 +67,17 @@ function Trigger.new(triggerPart, triggerSettings)
 	end
 
 
-	local scs = sp.StarterCharacterScripts;
 	local ScriptFolders = nil;
 	local PartFolders = nil;
 	local EventFolders = nil;
 	local PlayerHandler = nil;
 
 
-	if not scs:FindFirstChild("TriggerScripts") then
-		ScriptFolders = Instance.new("Folder", scs);
+	if not script.Handlers:FindFirstChild("TriggerScripts") then
+		ScriptFolders = Instance.new("Folder", script.Handlers);
 		ScriptFolders.Name = "TriggerScripts";
 	else
-		ScriptFolders = scs:FindFirstChild("TriggerScripts");
+		ScriptFolders = script.Handlers:FindFirstChild("TriggerScripts");
 	end
 
 
@@ -108,6 +107,7 @@ function Trigger.new(triggerPart, triggerSettings)
 	local TriggerHandler = script.Handlers.Main:Clone();
 	TriggerHandler.Name = "TriggerHandler";
 	TriggerHandler.Parent = Scripts;
+	TriggerHandler.Enabled = true;
 
 
 	local inEvent = Instance.new("RemoteEvent", Events);
