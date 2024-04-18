@@ -1,6 +1,6 @@
 --[[
 	== Revared: ReRand Game ToolKit ==
-	Created by Paige "paishee" Sheffield
+	Created by Megan "shysolocup" Sheffield
 
 	https://gitub.com/ReRand/RbxRevared
 ]]
