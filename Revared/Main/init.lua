@@ -1,6 +1,6 @@
 --[[
 	== Revared: ReRand Game ToolKit ==
-	Created by Megan "shysolocup" Sheffield
+	Created by Paige "paishee" Sheffield
 
 	https://gitub.com/ReRand/RbxRevared
 ]]
@@ -8,7 +8,8 @@
 
 local Revared = {
 	Modules = {},
-	Experiments = {}
+	Experiments = {},
+	CaptionStore = {}
 };
 
 
@@ -20,19 +21,19 @@ local functions = script.Functions;
 
 
 for _, mod in pairs(modules:GetChildren()) do
-    if mod:IsA("ModuleScript") then
+	if mod:IsA("ModuleScript") then
 		Revared.Modules[mod.Name] = mod;
-    end
+	end
 end
 
 
 if settings.Experiments.Value then
 	local experiments = script.Experiments;
-	
+
 	for _, exp in pairs(experiments:GetChildren()) do
-	    if exp:IsA("ModuleScript") then
+		if exp:IsA("ModuleScript") then
 			Revared.Experiments[exp.Name] = exp;
-	    end
+		end
 	end
 end
 
