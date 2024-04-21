@@ -204,8 +204,6 @@ function Captions:Display(name)
 		end
 	end
 	
-	print(caption);
-	
 	
 	if caption.Background then
 		for settingName, setting in pairs(caption.Background) do
