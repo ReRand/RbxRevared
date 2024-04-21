@@ -8,6 +8,7 @@ local Captions = {
 }
 
 
+
 Captions.Caption.__index = {}
 local Revared = _G.Revared;
 local CaptionStore = Revared.CaptionStore;
@@ -66,7 +67,7 @@ function Captions.Caption.new(capName: string, capText: string, capSettings)
 		
 		Gui = gui,
 		Label = label, -- where the hell are you ???
-		AuthorLabel = Captions.AuthorLabel, 
+		AuthorLabel = Captions.Author, 
 		BackgroundFrame = Captions.Background,
 		
 		Settings = capSettings,
@@ -109,7 +110,7 @@ function Captions.from(thing, capGui, capLabel: string, capBackground: string, c
 	
 	Captions.Gui = gui;
 	Captions.Label = label;
-	Captions.AuthorLabel = authorLabel;
+	Captions.Author = authorLabel;
 	Captions.Background = background;
 	
 	
@@ -123,7 +124,7 @@ function Captions.from(thing, capGui, capLabel: string, capBackground: string, c
 	}
 	
 	
-	Captions.Tweens = {
+	Captions.LabelTweens = {
 		In = TweenService:Create(label, TweenInfo.new(0), { 
 			TextStrokeTransparency = 0,
 			TextTransparency = 0,
@@ -175,6 +176,7 @@ function Captions.from(thing, capGui, capLabel: string, capBackground: string, c
 end
 
 
+
 function Captions:Display(name)
 	local caption = Captions[name];
 	local label = caption.Label;
@@ -223,7 +225,7 @@ function Captions:Display(name)
 	end
 	
 	
-	Captions.Tweens.In:Play();
+	Captions.LabelTweens.In:Play();
 	Captions.AuthorTweens.In:Play();
 	Captions.BackgroundTweens.In:Play();
 	
@@ -231,24 +233,22 @@ function Captions:Display(name)
 	task.wait(wordCount);
 	
 	
-	Captions.Tweens.Out:Play();
+	Captions.LabelTweens.Out:Play();
 	Captions.AuthorTweens.Out:Play();
 	Captions.BackgroundTweens.Out:Play();
 end
 
 
 
-function Captions:SetTweens(BackgroundInInfo: TweenInfo, BackgroundInTable, BackgroundOutInfo: TweenInfo, BackgroundOutTable,InInfo: TweenInfo, InTable, OutInfo: TweenInfo, OutTable, AuthorInInfo, AuthorInTable, AuthorOutInfo, AuthorOutTable)
-	if BackgroundInInfo and BackgroundInTable then Captions.BackgroundTweens.In = TweenService:Create(Captions.Background, BackgroundInInfo, BackgroundInTable); end
-	if BackgroundOutInfo and BackgroundOutTable then Captions.BackgroundTweens.Out = TweenService:Create(Captions.Background, BackgroundOutInfo, BackgroundOutTable); end
+function Captions:SetTweens(t)
+	for tweenName, tweenPart in pairs(t) do
+		local tweenstuff = Captions[tweenName.."Tweens"];
+		
+		tweenstuff.In = TweenService:Create(Captions[tweenName], tweenPart.In[1], tweenPart.In[2])
+		tweenstuff.Out = TweenService:Create(Captions[tweenName], tweenPart.Out[1], tweenPart.Out[2])
+	end
 	
-	if InInfo and InTable then Captions.Tweens.In = TweenService:Create(Captions.Label, InInfo, InTable); end
-	if OutInfo and OutTable then Captions.Tweens.Out = TweenService:Create(Captions.Label, OutInfo, OutTable); end
-	
-	if AuthorInInfo and AuthorInTable then Captions.AuthorTweens.In = TweenService:Create(Captions.AuthorLabel, AuthorInInfo, AuthorInTable); end
-	if AuthorOutInfo and AuthorOutTable then Captions.AuthorTweens.Out = TweenService:Create(Captions.AuthorLabel, AuthorOutInfo, AuthorOutTable); end
-	
-	return Captions.Tweens.In, Captions.Tweens.Out, Captions.AuthorTweens.In, Captions.AuthorTweens.Out;
+	return table.unpack(Captions.BackgroundTweens), table.unpack(Captions.LabelTweens), table.unpack(Captions.AuthorTweens)
 end
 
 
