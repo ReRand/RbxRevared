@@ -14,6 +14,7 @@ return (function(Entry, Dict)
             Value = value,
             Type = type,
             Id = nil,
+            Each = nil,
             
             Changed = Signal.new(),
             Destroyed = Signal.new(),
@@ -32,7 +33,15 @@ return (function(Entry, Dict)
                         return i;
                     end
                 end
-                    
+
+            elseif key == "Each" then
+                if table.Type == Dict.Types.Uni then
+                    return table.Value, table.Index;
+                 else
+                    return table.Key, table.Value, table.Index;
+                 end
+            
+                
             elseif rawget(table, key) then
                 return table[key];
                     
