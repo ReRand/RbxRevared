@@ -2,59 +2,105 @@ local Revared = _G.Revared;
 local Signal = Revared:GetModule("Signal");
 
 
-return (function(Bucket)
+return (function(Dict)
 
-    function Bucket.new(array)
-    	local self = setmetatable( {
+    function Dict.new(...)
 
-                    __dict = {},
 
-                    Changed = Signal.new(),
-                    
-                    Length = 0
-                    
-        }, Bucket );
+    	local self = setmetatable({
 
-        --[[
-    	if array then
-    		for i, v in pairs(array) do
-    			local stuff
-    			local vl = 0
-    			local str = tostring(v)
+            -- table where everything is stored
+            __dictdata = {},
+
+            -- events
+            --[[Changed = Signal.new(),
+            Destroyed = Signal.new(),
+            Created = Signal.new(),
+
+            -- this is mostly for updating meta and dict synchronously
+            MetaChange = Signal.new(),
+            DictChange = Signal.new(),]]
+            
+            Length = nil
+
+        }, Dict);
+
+
+        for _, tbl in ipairs({...}) do
+
+            local i = 1;
+
+            for ki, v in pairs(tbl) do
+
+                local entry = nil;
+                local vi = 0;
+
+
+                -- indexed uni
+                if type(ki) == "number" and type(v) ~= "table" then
+                    entry = Dict.Object.new(self, i, i, v, Dict.Types.Uni);
+
+
+                -- indexed pair
+                elseif type(ki) == "number" and type(v) == "table" then
+                    for _, __ in pairs(v) do vi = vi + 1 end
+
+                    if vi == 1 then
+                        for pk, pv in pairs(v) do
+                            entry = Dict.Object.new(self, pk, i, pv, Dict.Types.Pair);
+                        end
+                    end
+                
+
+                -- unindexed pair 
+                elseif type(ki) ~= "number" and type(v) ~= "table" then
+                    entry  = Dict.Object.new(self, ki, i, v, Dict.Types.Pair);
+                end
+
+
+                self.__dictdata[entry.Index] = entry;
+
+                i = i + 1;
+            end
+        end
     
-    			if type(v) == "table" then for _ in pairs(v) do vl = vl + 1 end end
-    
-    			if string.sub(str,1,string.len("(("))=="((" then
-    				stuff = {
-    					Key = i,
-    					Value = v,
-    					Type = "uni"
-    				}
-    
-    			elseif type(v) == "table" and vl == 1 then
-    				for Key, Value in pairs(v) do
-    					stuff = {
-    						Key = Key,
-    						Value = Value,
-    						Type = "pair"
-    					}
-    					break
-    				end
-    			else
-    				stuff = {
-    					Key = i,
-    					Value = v,
-    					Type = "uni"
-    				}
-    			end
-    
-    			self[length+1] = stuff
-    
-    			length = length + 1
-    		end
-    	end
-        ]]
-    
+
+        -- when something is gotten
+        Dict.__index = function(table, ki)
+
+            local length = 0;
+            for _, __ in pairs(table.__dictdata) do length = length + 1 end
+            
+            if key == "Length" then
+                return length;
+
+            else
+
+                -- first loop gets priority checking for key matches
+                for i, entry in ipairs(table.__dictdata) do
+                    if entry.Key == ki then
+                        return entry.Value;
+                    end
+                end
+
+                -- second loop checks for index matches
+                for i, entry in ipairs(table.__dictdata) do
+                    if entry.Index == ki then
+                        return entry.Value;
+                    end
+                end
+
+                -- if it can't find either it just returns from the table itself
+                return self[ki];
+            end
+        end;
+
+
+        --[[Dict.__newindex = function(table, key, value)
+            
+        end;]]
+
+
     	return self
     end
 
