@@ -35,6 +35,12 @@ return (function(Entry, Dict)
                     end
                 end
 
+            elseif key == "Pair" then
+                return Key, Value, Index;
+
+                elseif key == "Uni" then
+                    return Value, Index;
+
             elseif rawget(Entry, key) then
                 return Entry[key];
                 
