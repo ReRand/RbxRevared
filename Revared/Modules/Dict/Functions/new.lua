@@ -30,7 +30,7 @@ return (function(Dict)
 
             for ki, v in pairs(tbl) do
 
-                self:Append(i, ki, v);
+                self:Set(i, ki, v);
 
                 i = i + 1;
             end
