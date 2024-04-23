@@ -1,6 +1,6 @@
 return (function(Dict)
 
-    function Dict:Append(i, ki, v)
+    function Dict:Insert(i, ki, v)
   
         if not v then
           v = ki;
