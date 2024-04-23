@@ -34,7 +34,9 @@ return (function(Entry, Dict)
                         return i;
                     end
                 end
-            
+
+            elseif rawget(Entry, key) then
+                return Entry[key];
                 
             elseif rawget(table, key) then
                 return table[key];
