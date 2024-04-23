@@ -8,6 +8,8 @@ end
 return (function(Entry, Dict)
 
     function Entry.new(dict, key, value, type)
+        Entry.__index = Entry;
+            
     	local self = setmetatable( {
             Key = key,
             Index = nil,
