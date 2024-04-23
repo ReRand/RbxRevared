@@ -39,13 +39,21 @@ return (function(Dict)
 
         -- when something is gotten
         Dict.__index = function(table, ki)
-
-            local length = 0;
-            for _, __ in pairs(table.__dictdata) do length = length + 1 end
             
             if ki == "Length" then
+                local length = 0;
+                for _, __ in pairs(table.__dictdata) do length = length + 1 end
                 return length;
 
+                    
+            elseif ki == "Keys" then
+                local keys = {};
+
+                for i, entry in ipairs(table.__dictdata) do
+                    keys[i] = entry.Key;
+                end
+
+                return keys;
             else
 
                 -- first loop gets priority checking for key matches
