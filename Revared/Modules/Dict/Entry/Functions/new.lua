@@ -1,6 +1,9 @@
 local Revared = _G.Revared;
 local Signal = Revared:GetModule("Signal");
 
+function tableid(o)
+    return tostring(o):sub(type(o):len() + 3)
+end
 
 return (function(Entry, Dict)
 
@@ -19,7 +22,7 @@ return (function(Entry, Dict)
         }, Dict );
 
             
-        self.Id = tostring(self):sub(type(self):len() + 3);
+        self.Id = tableid(self);
 
             
         Entry.__index = function(table, key)
