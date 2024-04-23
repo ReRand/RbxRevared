@@ -1,4 +1,4 @@
-local Bucket = {
+local Dict = {
 	
 	__types = {
 		Uni = 1,
@@ -7,7 +7,7 @@ local Bucket = {
 
 }
 
-Bucket.__index = Bucket
+Dict.__index = Dict
 
 
 local functions = script.Functions;
@@ -15,8 +15,8 @@ local main = _G.Revared;
 
 
 for _, f in ipairs(functions:GetChildren()) do
-	require(f)(Bucket);
+	require(f)(Dict);
 end
 
 
-return Bucket;
+return Dict;
