@@ -33,7 +33,7 @@ return (function(Dict)
 
                 -- indexed uni
                 if type(ki) == "number" and type(v) ~= "table" then
-                    entry = Dict.Object.new(self, i, i, v, Dict.Types.Uni);
+                    entry = Dict.Object.new(self, i, v, Dict.Types.Uni);
 
 
                 -- indexed pair
@@ -42,18 +42,18 @@ return (function(Dict)
 
                     if vi == 1 then
                         for pk, pv in pairs(v) do
-                            entry = Dict.Object.new(self, pk, i, pv, Dict.Types.Pair);
+                            entry = Dict.Object.new(self, pk, pv, Dict.Types.Pair);
                         end
                     end
                 
 
                 -- unindexed pair 
                 elseif type(ki) ~= "number" and type(v) ~= "table" then
-                    entry  = Dict.Object.new(self, ki, i, v, Dict.Types.Pair);
+                    entry  = Dict.Object.new(self, ki, v, Dict.Types.Pair);
                 end
 
 
-                self.__dictdata[entry.Index] = entry;
+                self.__dictdata[i] = entry;
 
                 i = i + 1;
             end
