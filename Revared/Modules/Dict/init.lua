@@ -14,6 +14,10 @@ local functions = script.Functions;
 local main = _G.Revared;
 
 
+local Entry = require(script.Entry);
+Entry.init(Dict);
+
+
 for _, f in ipairs(functions:GetChildren()) do
 	require(f)(Dict);
 end
