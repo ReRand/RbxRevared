@@ -19,7 +19,7 @@ return (function(Entry, Dict)
             Destroyed = Signal.new(),
     
             Parent = dict
-        }, Dict );
+        }, Entry );
 
             
         self.Id = tableid(self);
