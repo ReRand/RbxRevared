@@ -1,4 +1,10 @@
-local Bucket = {}
+local Bucket = {
+	Types = {
+		Uni = 1,
+		Pair = 2
+	}
+}
+
 Bucket.__index = Bucket
 
 
