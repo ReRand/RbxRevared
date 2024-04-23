@@ -13,13 +13,8 @@ return (function(Dict)
             __dictdata = {},
 
             -- events
-            --[[Changed = Signal.new(),
-            Destroyed = Signal.new(),
-            Created = Signal.new(),
-
-            -- this is mostly for updating meta and dict synchronously
-            MetaChange = Signal.new(),
-            DictChange = Signal.new(),]]
+            Changed = Signal.new(),
+                    
             
             Length = nil
 
@@ -90,15 +85,38 @@ return (function(Dict)
                     end
                 end
 
-                -- if it can't find either it just returns from the table itself
-                return self[ki];
+                -- if it can't find either it just returns from the table itself or nil
+                if rawget(table, ki) then
+                    return table[ki];
+                  else
+                    return nil;
+                end
             end
         end;
 
 
-        --[[Dict.__newindex = function(table, key, value)
-            
-        end;]]
+        Dict.__newindex = function(table, ki, value)
+            -- first loop gets priority checking for key matches
+            for i, entry in ipairs(table.__dictdata) do
+                if entry.Key == ki then
+                    entry.Value = value;
+                end
+            end
+
+            -- second loop checks for index matches
+            for i, entry in ipairs(table.__dictdata) do
+                if entry.Index == ki then
+                    entry.Value = value;
+                end
+            end
+
+            -- if it can't find either it just sets in the table itself
+            if rawget(table, ki) then
+                table[ki] = value;
+              else
+                
+            end
+        end;
 
 
     	return self
