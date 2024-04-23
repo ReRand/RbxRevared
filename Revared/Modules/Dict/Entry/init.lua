@@ -1,5 +1,4 @@
 local Entry = {}
-Entry.__index = Entry;
 
 
 local functions = script.Functions;
