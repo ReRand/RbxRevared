@@ -67,7 +67,7 @@ return (function(Dict)
 
 
             elseif ki == "Entries" then
-                return table.__dictdata;
+                return table:Copy().__dictdata;
 
                     
             else
