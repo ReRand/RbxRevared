@@ -1,11 +1,21 @@
+local Revared = _G.Revared;
+local Signal = Revared:GetModule("Signal");
+
+
 return (function(Bucket)
 
     function Bucket.new(array)
+    	local self = setmetatable( {
 
-    	local self = setmetatable( {}, Bucket )
-    	local length = 0
+                    __dict = {},
 
-            
+                    Changed = Signal.new(),
+                    
+                    Length = 0
+                    
+        }, Bucket );
+
+        --[[
     	if array then
     		for i, v in pairs(array) do
     			local stuff
@@ -43,6 +53,7 @@ return (function(Bucket)
     			length = length + 1
     		end
     	end
+        ]]
     
     	return self
     end
