@@ -33,8 +33,8 @@ return (function(Entry, Dict)
                     end
                 end
                     
-            elseif rawget(table, ki) then
-                return table[ki];
+            elseif rawget(table, key) then
+                return table[key];
                     
             else
                 return nil;
