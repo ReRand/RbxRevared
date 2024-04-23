@@ -43,7 +43,7 @@ return (function(Dict)
             local length = 0;
             for _, __ in pairs(table.__dictdata) do length = length + 1 end
             
-            if key == "Length" then
+            if ki == "Length" then
                 return length;
 
             else
