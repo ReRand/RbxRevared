@@ -18,7 +18,7 @@ return (function(Bucket)
     				stuff = {
     					Key = i,
     					Value = v,
-    					Type = Bucket.Types.Uni
+    					Type = "uni"
     				}
     
     			elseif type(v) == "table" and vl == 1 then
@@ -26,7 +26,7 @@ return (function(Bucket)
     					stuff = {
     						Key = Key,
     						Value = Value,
-    						Type = Bucket.Types.Pair
+    						Type = "pair"
     					}
     					break
     				end
@@ -34,7 +34,7 @@ return (function(Bucket)
     				stuff = {
     					Key = i,
     					Value = v,
-    					Type = Bucket.Types.Uni
+    					Type = "uni"
     				}
     			end
     
