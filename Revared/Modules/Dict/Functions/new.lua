@@ -54,8 +54,23 @@ return (function(Dict)
                 end
 
                 return keys;
-            else
 
+                    
+            elseif ki == "Values" then
+                local values = {};
+
+                for i, entry in ipairs(table.__dictdata) do
+                    values[i] = entry.Value;
+                end
+
+                return values;
+
+
+            elseif ki == "Entries" then
+                return table.__dictdata;
+
+                    
+            else
                 -- first loop gets priority checking for key matches
                 for i, entry in ipairs(table.__dictdata) do
                     if entry.Key == ki then
