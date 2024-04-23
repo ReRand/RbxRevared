@@ -9,8 +9,6 @@ local Dict = {
 
 }
 
-Dict.__index = Dict
-
 
 local functions = script.Functions;
 local main = _G.Revared;
