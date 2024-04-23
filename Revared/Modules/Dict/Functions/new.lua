@@ -72,6 +72,7 @@ return (function(Dict)
         end;
 
 
+        -- when something is altered
         Dict.__newindex = function(table, ki, value)
             -- first loop gets priority checking for key matches
             for i, entry in ipairs(table.__dictdata) do
