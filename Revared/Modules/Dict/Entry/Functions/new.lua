@@ -7,7 +7,7 @@ return (function(Entry, Dict)
     function Entry.new(dict, key, index, value, type)
     	local self = setmetatable( {
             Key = key,
-            Index = index,
+            Index = nil,
             Value = value,
             Type = type,
             
