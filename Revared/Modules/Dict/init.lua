@@ -1,4 +1,6 @@
 local Dict = {
+
+	Entry = nil,
 	
 	__types = {
 		Uni = 1,
@@ -16,6 +18,9 @@ local main = _G.Revared;
 
 local Entry = require(script.Entry);
 Entry.init(Dict);
+
+
+Dict.Entry = Entry;
 
 
 for _, f in ipairs(functions:GetChildren()) do
