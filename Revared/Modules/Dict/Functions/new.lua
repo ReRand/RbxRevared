@@ -92,7 +92,7 @@ return (function(Dict)
             if rawget(table, ki) then
                 table[ki] = value;
               else
-                
+                table:Set(ki, value);
             end
         end;
 
