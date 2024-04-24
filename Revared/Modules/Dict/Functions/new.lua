@@ -14,6 +14,7 @@ return (function(Dict)
 
             -- table where everything is stored
             __dictdata = {},
+            __args = {...},
 
             -- events
             Changed = Signal.new(),
