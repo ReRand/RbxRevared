@@ -71,6 +71,16 @@ return (function(Dict)
                 return table:Clone().__dictdata;
 
                     
+            elseif ki == "StringEntries" then
+                local re = {};
+
+                for i, entry in ipairs(table.__dictdata) do
+                    re[i] = { [entry.Key] = entry.Value };
+                end
+
+                return re;
+
+                    
             else
                 -- first loop gets priority checking for key matches
                 for i, entry in ipairs(table.__dictdata) do
