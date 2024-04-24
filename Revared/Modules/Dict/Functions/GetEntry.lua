@@ -1,10 +1,10 @@
 return (function(Dict)
 
     function Dict:GetEntry(keyOrIndex)
-      if dict.__dictdata[keyOrIndex] then
-        return dict.__dictdata[keyOrIndex];
+      if self.__dictdata[keyOrIndex] then
+        return self.__dictdata[keyOrIndex];
       else
-        for i, entry in ipairs(dict.__dictdata) do
+        for i, entry in ipairs(self.__dictdata) do
           if entry.Key == keyOrIndex then
             return entry;
           end
