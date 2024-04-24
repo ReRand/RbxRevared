@@ -36,10 +36,13 @@ return (function(Entry, Dict)
                 end
 
             elseif key == "Pair" then
-                return Key, Value, Index;
+                return table.Key, table.Value, table.Index;
 
                 elseif key == "Uni" then
-                    return Value, Index;
+                    return table.Value, table.Index;
+
+                elseif key == "Parts" then
+                    return table.Index, table.Key, table.Value;
 
             elseif rawget(Entry, key) then
                 return Entry[key];
