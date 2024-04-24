@@ -1,7 +1,7 @@
 return (function(Dict)
 
     function Dict:FirstKey(offset)
-      if not offset then offset = 0;
+      if not offset then offset = 0; end
       return self[1+offset].Key;
     end
     
