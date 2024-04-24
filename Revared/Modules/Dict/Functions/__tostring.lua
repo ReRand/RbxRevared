@@ -5,7 +5,7 @@ function dump(o)
       local s = '{\n'
       for k,v in pairs(o) do
          if type(k) ~= 'number' then k = '"'..k..'"' end
-         s = s .. k ..': ' .. dump(v) .. ','
+         s = s .. k ..': ' .. dump(v) .. ',\n'
       end
       return s .. '\n}'
    else
