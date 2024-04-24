@@ -15,7 +15,7 @@ end
 
 return (function(Dict)
 
-  function Dict.__tostring()
+  function Dict:__tostring()
       return "Dict ("..tostring(self.Length)..") "..dump(self.__dictdata);
     end
     
