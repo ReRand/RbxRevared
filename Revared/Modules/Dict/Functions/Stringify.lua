@@ -11,11 +11,20 @@ function stringify(o, indents, layer)
     
    if type(o) == 'table' then
       local s = '{\n'
+      
+      local i = 0;
+      
       for k,v in pairs(o) do
+          i = i + 1;
+          
          if layer == 0 then
            s = tab..s..tab..stringify(v, indents, layer+1) .. ',\n'
           else
-            s = s ..tab .. tab .. k ..': ' .. stringify(v, indents, layer+1) .. ',\n'
+            if k == i then
+              s = s ..tab .. tab .. stringify(v, indents, layer+1) .. ',\n';
+            else
+              s = s ..tab .. tab .. k ..': ' .. stringify(v, indents, layer+1) .. ',\n';
+            end
           end
       end
       return tab.. s .. tab.. '}'
