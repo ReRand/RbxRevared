@@ -25,6 +25,7 @@ return (function(Dict)
                 end
             end
         end
+                
       elseif type(f) == "function" then
         for i, entry in ipairs(self.__dictdata) do
           if entry.Type == Dict.Types.Uni and not f(entry.Value, i) then
@@ -33,6 +34,7 @@ return (function(Dict)
             return false;
           end
         end
+                
       else
         for i, entry in ipairs(self.__dictdata) do
           if entry.Value ~= f then
