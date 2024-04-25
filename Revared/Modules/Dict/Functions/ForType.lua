@@ -4,10 +4,10 @@ return (function(Dict)
         local uni = nil;
       local pair = nil;
       
-        for type, f in pairs(tbl)
-          if (type(type) == "string" and lower(type) == "uni") or (type(type) == "number" and type == Dict.Types.Uni) then
+        for t, f in pairs(tbl) do
+          if (type(t) == "string" and lower(t) == "uni") or (type(t) == "number" and t == Dict.Types.Uni) then
             uni = f;
-      elseif (type(type) == "string" and lower(type) == "pair") or (type(type) == "number" and type == Dict.Types.Pair) then
+      elseif (type(t) == "string" and lower(t) == "pair") or (type(t) == "number" and t == Dict.Types.Pair) then
             pair = f;
       end
     end
