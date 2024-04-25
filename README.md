@@ -1,11 +1,12 @@
 <a href="https://github.com/ReRand/RbxRevared"><img height=100 src="https://github.com/ReRand/RbxRevared/blob/main/Assets/Revared.png?raw=true" alt="Banner">
 
-An open source developer toolkit used in ReRand Roblox games
+A powerful open source developer toolkit used in ReRand Roblox games
 - Advanced Triggers
 - Client-side badges and data stores
 - Global-side stuff
 - Custom Script Signals
 - Directory fetching
+- Dict types
 
 <br>
 
