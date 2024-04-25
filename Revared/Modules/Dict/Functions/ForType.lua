@@ -5,9 +5,9 @@ return (function(Dict)
       local pair = nil;
       
         for t, f in pairs(tbl) do
-          if (type(t) == "string" and lower(t) == "uni") or (type(t) == "number" and t == Dict.Types.Uni) then
+          if (type(t) == "string" and string.lower(t) == "uni") or (type(t) == "number" and t == Dict.Types.Uni) then
             uni = f;
-      elseif (type(t) == "string" and lower(t) == "pair") or (type(t) == "number" and t == Dict.Types.Pair) then
+      elseif (type(t) == "string" and string.lower(t) == "pair") or (type(t) == "number" and t == Dict.Types.Pair) then
             pair = f;
       end
     end
