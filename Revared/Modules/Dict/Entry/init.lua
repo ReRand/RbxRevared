@@ -1,5 +1,5 @@
 local Entry = {
-  __ = script.__
+	__ = script.__
 }
 
 
@@ -11,10 +11,9 @@ function Entry.init(Dict)
   for _, f in ipairs(functions:GetChildren()) do
   	require(f)(Entry, Dict);
   end
+  
+	require(script.new)(Entry, Dict)
 end
-
-
-require(script.new)(Entry, Dict)
 
 
 return Entry;
