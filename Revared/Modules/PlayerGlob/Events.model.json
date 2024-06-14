@@ -1,0 +1,9 @@
+{
+    "ClassName": "Folder",
+
+    "Children": [
+        { "Name": "RespawnServer", "ClassName": "RemoteEvent" },
+        { "Name": "RespawnWHDServer", "ClassName": "RemoteEvent" },
+    ]
+    
+}
