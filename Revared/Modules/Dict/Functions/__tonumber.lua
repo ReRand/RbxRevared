@@ -4,4 +4,4 @@ return (function(Dict)
       return self.Length;
     end
     
-  end
+    end)
