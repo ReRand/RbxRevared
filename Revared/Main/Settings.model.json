@@ -1,0 +1,16 @@
+{
+    "ClassName": "Folder",
+
+    "Children": [
+        
+        { "Name": "Experiments", "ClassName": "BoolValue", 
+            "Value": true 
+        },
+        
+        { "Name": "Dev", "ClassName": "BoolValue", 
+            "Value": false
+        }
+    
+    ]
+    
+}
