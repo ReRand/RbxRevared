@@ -12,4 +12,7 @@ function Entry.init(Dict)
 end
 
 
+require(script.new)(Entry, Dict)
+
+
 return Entry;
