@@ -2,7 +2,7 @@ local Dict = {
 
 	Entry = nil,
 	
-	__types = {
+	Types = {
 		Uni = 1,
 		Pair = 2
 	}
