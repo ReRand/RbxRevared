@@ -1,18 +1,33 @@
-local Entry = {}
+local Revared = _G.Revared;
+local Signal = Revared:GetModule("Signal");
 
-
-local functions = script.Functions;
-local main = _G.Revared;
-
-
-function Entry.init(Dict)
-  for _, f in ipairs(functions:GetChildren()) do
-  	require(f)(Entry, Dict);
-  end
+function tableid(o)
+    return tostring(o):sub(type(o):len() + 3)
 end
 
+return (function(Entry, Dict)
 
-require(script.new)(Entry, Dict)
+    function Entry.new(dict, key, value, type)
+        Entry.__index = Entry;
+            
+    	local self = setmetatable( {
+            Key = key,
+            Index = nil,
+            Value = value,
+            Type = type,
+            Id = nil,
+            
+            Changed = Signal.new(),
+            Destroyed = Signal.new(),
+    
+            Parent = dict
+        }, Entry );
 
+            
+        self.Id = tableid(self);
 
-return Entry;
+            
+		require(Entry.__.index)(self);
+	end
+        
+end)
