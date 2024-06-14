@@ -1,4 +1,6 @@
-local Entry = {}
+local Entry = {
+  __ = script.__
+}
 
 
 local functions = script.Functions;
