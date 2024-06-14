@@ -18,26 +18,7 @@
 
 				"Modules": {
 					"$className": "Folder",
-
-					"LocalDataStores": {
-						"$path": "Revared/Modules/LocalDataStores"
-					},
-					
-					"LocalBadges": {
-						"$path": "Revared/Modules/LocalBadges"
-					},
-					
-					"Trigger": {
-						"$path": "Revared/Modules/Trigger"
-					},
-	
-					"Signal": {
-						"$path": "Revared/Modules/Signal"
-					},
-
-					"GlobalSide": {
-						"$path": "Revared/Modules/GlobalSide"
-					}
+					"$path": "Revared/Modules"
 				}
 			}
 		}
