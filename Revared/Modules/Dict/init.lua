@@ -27,5 +27,7 @@ for _, f in ipairs(functions:GetChildren()) do
 	require(f)(Dict);
 end
 
+require(script.new)(Dict)
+
 
 return Dict;
