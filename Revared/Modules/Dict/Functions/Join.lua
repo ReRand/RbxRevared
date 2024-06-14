@@ -1,4 +1,4 @@
-return (function()
+return (function(Dict)
 
     function Dict:Join(joiner)
     if not joiner then joiner = "," end
