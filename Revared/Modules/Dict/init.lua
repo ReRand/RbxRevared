@@ -5,7 +5,9 @@ local Dict = {
 	Types = {
 		Uni = 1,
 		Pair = 2
-	}
+	},
+	
+	__ = script.__
 
 }
 
