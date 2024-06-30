@@ -1,7 +1,7 @@
 --[[
 
 TouchParams customize how the TouchGenius should behave and should ONLY be accessed using TouchGenius.TouchParams
-- Maintain (Boolean) value that decides if it should automatically constantly check for touches that maintain contact for the TouchMaintained event, default true
+- Maintain (Boolean) value that decides if it should automatically constantly check for touches that maintain contact for the TouchMaintained event, default false
 - MaintainLoopDelay (Number) value that decides how long it should wait inbetween checks for TouchMaintained, default 0
 - MaintainFilter (Table) table that handles descendant filtering in TouchMaintained and GetTouchingParts, if something is a descendant of the thing given it'll either include or exclude it depending on the MaintainFilterType, default {}
 - MaintainFilterType (Enum.RaycastFilterType) enum accessed through TouchGenius.TouchFilterTypes that decides if filtered things in TouchMaintained/GetTouchingParts should be included or excluded, default Enum.RaycastFilterType.Exclude
@@ -26,7 +26,7 @@ return (function(TouchGenius)
 	function TouchParams.new(paramTable)
 		if not paramTable then paramTable = {} end;
 		
-		if not paramTable.Maintain then paramTable.Maintain = true; end
+		if not paramTable.Maintain then paramTable.Maintain = false; end
 		if not paramTable.MaintainLoopDelay then paramTable.MaintainLoopDelay = 0 end;
 		
 		if not paramTable.MaintainFilter or (paramTable.MaintainFilter and typeof(paramTable.MaintainFilter) ~= "table") then paramTable.MaintainFilter = {}; end
