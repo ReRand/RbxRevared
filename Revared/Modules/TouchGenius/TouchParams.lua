@@ -7,7 +7,7 @@ TouchParams customize how the TouchGenius should behave and should ONLY be acces
 - MaintainFilterType (Enum.RaycastFilterType) enum accessed through TouchGenius.TouchFilterTypes that decides if filtered things in TouchMaintained/GetTouchingParts should be included or excluded, default Enum.RaycastFilterType.Exclude
 - TouchFilter (Table) table that handles descendant filtering in the touch events, if something is a descendant of the thing given it'll either include or exclude it depending on the TouchFilterType, default {}
 - TouchFilterType (Enum.RaycastFilterType) enum accessed through TouchGenius.TouchFilterTypes that decides if filtered things in touch events should be included or excluded, default Enum.RaycastFilterType.Exclude
-- RawResults (Boolean) value that decides if events should return a TouchResult or a normal Instance
+- RawResults (Boolean) value that decides if events should return a TouchResult or a normal Instance, default false
 - AsyncWaitingLoopDelay (Number) value that decides how long it should wait inbetween checks for TouchEnded, default 0
 
 ]]
