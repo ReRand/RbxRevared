@@ -1,16 +1,19 @@
-return (function(Revared)
+function split(inputstr, sep)
+	if sep == nil then
+		sep = "%s"
+	end
+	local t = {}
+	for str in string.gmatch(inputstr, "([^"..sep.."]+)") do
+		table.insert(t, str)
+	end
+	return t
+end
 
+
+return (function(Revared)
     
 	function Revared:GetDirectoryOf(x)
-		local dir = {};
-
-	    while x ~= game do
-	        local name = x.Name:gsub('[\"]', '\\%0');
-	        table.insert(dir, 1, name);
-	        x = x.Parent;
-	    end
-	
-	    return dir;
+		return x == game and {} or split(x:GetFullName(), ".")
 	end
 
     
