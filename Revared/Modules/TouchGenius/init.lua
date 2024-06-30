@@ -1,5 +1,53 @@
-local RBXScriptSignal = require(workspace.Modules.Signal);
+--[[
+
+
+TouchGenius is a better version of the basic touch events for 3d objects
+
+
+- Touched and TouchEnded
+Touched and TouchEnded works more reliably now but if you wish to use the old ones there's the DefaultTouched and DefaultTouchEnded events
+
+
+- DefaulTouched and DefaultTouchEnded
+DefaultTouched and DefaultTouchEnded still uses TouchResult but they work on the old roblox systems for the two
+
+
+- TouchMaintained
+TouchMaintained is togglable with TouchParams (TouchParams.Maintain) and gets fired constantly while something is touching the object
+the time between checks is customizable with TouchParams (TouchParams.MaintainLoopDelay)
+
+
+- AsyncWaiting
+the AsyncWaiting array is for the fixed Touched and TouchEnded
+it's there so that Touched is fired once and then asynchronously waits until IsTouched is false to fire the TouchEnded event 
+
+
+Example:
+
+	local Revared = require(workspace.Modules.Revared)
+	local TouchGenius = Revared:GetModule("TouchGenius");
+	local part = script.Parent;
+	
+	
+	local tg = TouchGenius.new(part);
+	
+	
+	tg.Touched:Connect(function(res)
+		print(res.Instance);
+	end);
+	
+	
+	tg.TouchEnded:Connect(function(res)
+		print(res.Instance);
+	end);
+
+
+]]
+
+
 local Revared = _G.Revared;
+local RBXScriptSignal = Revared:GetModule("Signal");
+
 
 local TouchResult = require(script.TouchResult);
 
@@ -37,7 +85,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 	local self = setmetatable({
 		
 		Part = part,
-		TouchParams = touchParams,	
+		TouchParams = touchParams,
 		
 		DefaultTouched = RBXScriptSignal.new(),
 		DefaultTouchEnded = RBXScriptSignal.new(),
@@ -46,8 +94,6 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 		TouchEnded = RBXScriptSignal.new(),
 		
 		TouchMaintained = RBXScriptSignal.new(),
-		
-		MaintainActive = true,
 		
 		AsyncWaiting = {}
 		
@@ -79,7 +125,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 			
 			coroutine.wrap(function()
 				
-				repeat task.wait(self.TouchParams.MaintainLoopDelay or 0) until not self:IsTouching(origin)
+				repeat task.wait(self.TouchParams.AsyncWaitingLoopDelay or 0) until not self:IsTouching(origin)
 				local _, i = self:IsAsyncWaiting(origin);
 				
 				table.remove(self.AsyncWaiting, i);
@@ -206,9 +252,7 @@ function TouchGenius:IsFiltered(part, filter, filterType)
 		g = g:FindFirstChild(d);
 
 		for _, f in pairs(filter) do
-			if f == g and filterType == TouchGenius.TouchFilterTypes.Exclude then
-				return true;
-			elseif f ~= g and filterType == TouchGenius.TouchFilterTypes.Include then
+			if (f == g and filterType == TouchGenius.TouchFilterTypes.Exclude) or (f ~= g and filterType == TouchGenius.TouchFilterTypes.Include) then
 				return true;
 			end
 		end
