@@ -1,3 +1,15 @@
+--[[
+
+TouchResult is what's returned from the TouchGenius events if the RawResults param is not true
+- SideTouched is a NormalId
+- State is a UserInputState
+
+
+]]
+
+
+
+
 local TouchResult = {};
 TouchResult.__index = TouchResult;
 
