@@ -1,5 +1,8 @@
 local HttpService = game:GetService("HttpService");
 
-game.ChildAdded:Connect(function(child)
+function AddUID(child)
 	child:SetAttribute("UID", HttpService:GenerateGUID(false))
-end)
+	child.ChildAdded:Connect(AddUID);
+end
+
+game.ChildAdded:Connect()
