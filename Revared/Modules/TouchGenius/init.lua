@@ -166,7 +166,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 	if self.TouchParams.Maintain then
 		coroutine.wrap(function()
 			while task.wait(self.TouchParams.MaintainLoopDelay or 0) do
-				if self.MaintainActive then
+				-- if self.MaintainActive then
 					for i, p in ipairs(self:GetTouchingParts()) do
 						
 						if self.TouchParams.RawResults then
@@ -175,7 +175,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 							self.TouchMaintained:Fire(p, p.Instance, TouchGenius.TouchStates.TouchMaintain);
 						end
 					end
-				end
+				-- end
 			end
 		end)();
 	end
