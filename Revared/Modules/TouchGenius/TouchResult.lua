@@ -43,20 +43,26 @@ function TouchResult.new(touchGenius, hit, state)
 	
 	local g = game;
 	
-	pcall(function()
-		for _, d in pairs(Revared:GetDirectoryOf(hit)) do
-			g = g:FindFirstChild(d);
+	if touchGenius.TouchParams.PlayerCheck or touchGenius.TouchParams.HumanCheck then
+		pcall(function()
+			for _, d in pairs(Revared:GetDirectoryOf(hit)) do
+				g = g:FindFirstChild(d);
 
-			if g and g:FindFirstChild("Humanoid") then
-				character = g
-				human = g:FindFirstChild("Humanoid");
-			end
+				if touchGenius.TouchParams.HumanCheck then
+					if g and g:FindFirstChild("Humanoid") then
+						character = g
+						human = g:FindFirstChild("Humanoid");
+					end
+				end
 
-			if g and game.Players:GetPlayerFromCharacter(g) then
-				player = game.Players:GetPlayerFromCharacter(g)
+				if touchGenius.TouchParams.PlayerCheck then
+					if g and game.Players:GetPlayerFromCharacter(g) then
+						player = game.Players:GetPlayerFromCharacter(g)
+					end
+				end
 			end
-		end
-	end)
+		end)
+	end
 	
 	
 	local self = setmetatable({
