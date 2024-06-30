@@ -107,58 +107,94 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 	
 	
 	part.Touched:Connect(function(hit)
-		
-		local origin = hit
-		
-		if self:IsFiltered(origin, self.TouchParams.TouchFilter, self.TouchParams.TouchFilterType) then return end;
-		
-		if not self.TouchParams.RawResults then
-			hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchBegin);
-			self.DefaultTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
-		else
-			self.DefaultTouched:Fire(origin, TouchGenius.TouchStates.TouchBegin);
-		end
-		
-		
-		if not self:IsAsyncWaiting(origin) then
-			table.insert(self.AsyncWaiting, origin);
-		
-		
-			self.Touched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
-			
-			
-			coroutine.wrap(function()
-				
-				repeat task.wait(self.TouchParams.AsyncWaitingLoopDelay or 0) until not self:IsTouching(origin)
-				local _, i = self:IsAsyncWaiting(origin);
-				
-				table.remove(self.AsyncWaiting, i);
-				
-				if not self.TouchParams.RawResults then
-					hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchEnd);
-					self.TouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
-				else
-					self.TouchEnded:Fire(origin, TouchGenius.TouchStates.TouchEnd);
-				end
-				
-			end)()
-		end
+		coroutine.wrap(function()
+			local origin = hit
+
+			if self:IsFiltered(origin, self.TouchParams.TouchFilter, self.TouchParams.TouchFilterType) then return end;
+
+			if not self.TouchParams.RawResults then
+				hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchBegin);
+
+				self.DefaultTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+			else
+				self.DefaultTouched:Fire(origin, TouchGenius.TouchStates.TouchBegin);
+			end
+
+
+			if not self:IsAsyncWaiting(origin) then
+				coroutine.wrap(function()
+					
+					coroutine.wrap(function()
+						if not self.TouchParams.RawResults then
+							self.Touched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+						else
+							self.Touched:Fire(origin, TouchGenius.TouchStates.TouchBegin);
+						end
+					end)()
+					
+					
+					table.insert(self.AsyncWaiting, origin);
+					
+					
+					origin.Destroying:Connect(function()
+						coroutine.wrap(function()
+							
+							coroutine.wrap(function()
+								if not self.TouchParams.RawResults then
+									hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchEnd);
+									self.TouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+								else
+									self.TouchEnded:Fire(origin, TouchGenius.TouchStates.TouchEnd);
+								end
+							end)()
+
+							local _, i = self:IsAsyncWaiting(origin);
+
+							table.remove(self.AsyncWaiting, i);
+
+						end)()
+					end)
+
+
+					coroutine.wrap(function()
+
+						repeat task.wait(self.TouchParams.AsyncWaitingLoopDelay or 0) until self:IsTouching(origin);
+						repeat task.wait(self.TouchParams.AsyncWaitingLoopDelay or 0) until not self:IsTouching(origin);
+
+						coroutine.wrap(function()
+							if not self.TouchParams.RawResults then
+								hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchEnd);
+								self.TouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+							else
+								self.TouchEnded:Fire(origin, TouchGenius.TouchStates.TouchEnd);
+							end
+						end)()
+
+						local _, i = self:IsAsyncWaiting(origin);
+
+						table.remove(self.AsyncWaiting, i);
+
+					end)()
+				end)()
+			end
+		end)()
 	end);
 	
 	
 	
 	part.TouchEnded:Connect(function(hit)
-		
-		local origin = hit
-		
-		if self:IsFiltered(origin, self.TouchParams.TouchFilter, self.TouchParams.TouchFilterType) then return end;
-		
-		if not self.TouchParams.RawResults then
-			hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchEnd);
-			self.DefaultTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
-		else
-			self.DefaultTouched:Fire(origin, TouchGenius.TouchStates.TouchEnd);
-		end
+		coroutine.wrap(function()
+			local origin = hit
+
+			if self:IsFiltered(origin, self.TouchParams.TouchFilter, self.TouchParams.TouchFilterType) then return end;
+
+			if not self.TouchParams.RawResults then
+				hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchEnd);
+				self.DefaultTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+			else
+				self.DefaultTouched:Fire(origin, TouchGenius.TouchStates.TouchEnd);
+			end
+		end)()
 	end)
 	
 	
@@ -166,7 +202,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 	if self.TouchParams.Maintain then
 		coroutine.wrap(function()
 			while task.wait(self.TouchParams.MaintainLoopDelay or 0) do
-				-- if self.MaintainActive then
+				if self.TouchParams.Maintain then
 					for i, p in ipairs(self:GetTouchingParts()) do
 						
 						if self.TouchParams.RawResults then
@@ -175,7 +211,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 							self.TouchMaintained:Fire(p, p.Instance, TouchGenius.TouchStates.TouchMaintain);
 						end
 					end
-				-- end
+				end
 			end
 		end)();
 	end
