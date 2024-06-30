@@ -37,6 +37,18 @@ return (function(TouchGenius)
 
 		return self;
 	end
+	
+	
+	
+	function TouchParams:AddToMaintainFilter(instances)
+		if typeof(instances) == "table" then
+			for _, i in pairs(instances) do
+				table.insert(self.MaintainFilter, i);
+			end
+		else
+			table.insert(self.MaintainFilter, instances);
+		end
+	end
 
 
 
