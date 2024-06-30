@@ -8,6 +8,10 @@ TouchGenius is a better version of the basic touch events for 3d objects
 Touched and TouchEnded works more reliably now but if you wish to use the old ones there's the DefaultTouched and DefaultTouchEnded events
 
 
+- Player and Humanoid
+there are a few different events for players and humanoids like PlayerTouched/PlayerTouchEnded and HumanTouched/HumanTouchEnded
+
+
 - RawResults
 RawResults is an option in TouchParams (TouchParams.RawResult) that decides if it should return a TouchResult or a normal Instance, by default it's false
 
@@ -93,11 +97,21 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 		
 		DefaultTouched = RBXScriptSignal.new(),
 		DefaultTouchEnded = RBXScriptSignal.new(),
+		DefaultPlayerTouched = RBXScriptSignal.new(),
+		DefaultPlayerTouchEnded = RBXScriptSignal.new(),
+		DefaultHumanTouched = RBXScriptSignal.new(),
+		DefaultHumanTouchEnded = RBXScriptSignal.new(),
 		
 		Touched = RBXScriptSignal.new(),
 		TouchEnded = RBXScriptSignal.new(),
+		PlayerTouched = RBXScriptSignal.new(),
+		PlayerTouchEnded = RBXScriptSignal.new(),
+		HumanTouched = RBXScriptSignal.new(),
+		HumanTouchEnded = RBXScriptSignal.new(),
 		
 		TouchMaintained = RBXScriptSignal.new(),
+		PlayerTouchMaintained = RBXScriptSignal.new(),
+		HumanTouchMaintained = RBXScriptSignal.new(),
 		
 		AsyncWaiting = {}
 		
@@ -109,6 +123,8 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 	part.Touched:Connect(function(hit)
 		coroutine.wrap(function()
 			local origin = hit
+			local player = nil;
+			local human = nil;
 
 			if self:IsFiltered(origin, self.TouchParams.TouchFilter, self.TouchParams.TouchFilterType) then return end;
 
@@ -116,6 +132,16 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 				hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchBegin);
 
 				self.DefaultTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+				
+				if hit.Humanoid then
+					human = hit.Humanoid
+					self.DefaultHumanTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+				end
+				
+				if hit.Player then
+					player = hit.Player;
+					self.DefaultPlayerTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+				end
 			else
 				self.DefaultTouched:Fire(origin, TouchGenius.TouchStates.TouchBegin);
 			end
@@ -127,6 +153,16 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 					coroutine.wrap(function()
 						if not self.TouchParams.RawResults then
 							self.Touched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+							
+							if human then
+								human = hit.Humanoid;
+								self.HumanTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+							end
+
+							if player then
+								player = hit.Player;
+								self.PlayerTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+							end
 						else
 							self.Touched:Fire(origin, TouchGenius.TouchStates.TouchBegin);
 						end
@@ -143,6 +179,16 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 								if not self.TouchParams.RawResults then
 									hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchEnd);
 									self.TouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+									
+									if human then
+										human = hit.Humanoid;
+										self.HumanTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+									end
+
+									if player then
+										player = hit.Player;
+										self.PlayerTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+									end
 								else
 									self.TouchEnded:Fire(origin, TouchGenius.TouchStates.TouchEnd);
 								end
@@ -165,6 +211,16 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 							if not self.TouchParams.RawResults then
 								hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchEnd);
 								self.TouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+								
+								if human then
+									human = hit.Humanoid;
+									self.HumanTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+								end
+
+								if player then
+									player = hit.Player;
+									self.PlayerTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+								end
 							else
 								self.TouchEnded:Fire(origin, TouchGenius.TouchStates.TouchEnd);
 							end
@@ -209,6 +265,14 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 							self.TouchMaintained:Fire(p, TouchGenius.TouchStates.TouchMaintain);
 						else
 							self.TouchMaintained:Fire(p, p.Instance, TouchGenius.TouchStates.TouchMaintain);
+							
+							if p.Humanoid then
+								self.HumanTouchMaintained:Fire(p, p.Instance, TouchGenius.TouchStates.TouchMaintain);
+							end
+
+							if p.Player then
+								self.PlayerTouchMaintained:Fire(p, p.Instance, TouchGenius.TouchStates.TouchMaintain);
+							end
 						end
 					end
 				end
