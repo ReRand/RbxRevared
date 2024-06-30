@@ -10,6 +10,7 @@ Touched and TouchEnded works more reliably now but if you wish to use the old on
 
 - Player and Humanoid
 there are a few different events for players and humanoids like PlayerTouched/PlayerTouchEnded and HumanTouched/HumanTouchEnded
+checks for player and humanoid can also be toggled using TouchParams (TouchParams.PlayerCheck and TouchParams.HumanCheck)
 
 
 - RawResults
