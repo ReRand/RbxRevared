@@ -11,6 +11,12 @@
 				"$path": "Revared/Main",
 
 
+				"Scripts": {
+					"$className": "Folder",
+					"$path": "Revared/Scripts"
+				},
+
+
 				"Experiments": {
 					"$className": "Folder",
 					"$path": "Revared/Experiments"
