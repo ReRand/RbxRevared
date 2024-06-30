@@ -3,7 +3,7 @@ TouchResult.__index = TouchResult;
 
 
 
-function TouchResult.new(touchGenius, hit)
+function TouchResult.new(touchGenius, hit, state)
 	local part = touchGenius.Part;
 	
 	
@@ -35,8 +35,12 @@ function TouchResult.new(touchGenius, hit)
 		CFrame = hit.CFrame,
 		
 		SideTouched = surface,
-		Normal = nil,
-		Material = hit.Material
+		Normal = Vector3.new(),
+		Material = hit.Material,
+		
+		TouchGenius = touchGenius,
+		
+		TouchState = state
 		
 	}, TouchResult);
 	
@@ -48,6 +52,7 @@ function TouchResult.new(touchGenius, hit)
 
 	local direction = (hit.Position - part.Position).Unit;
 	local result = workspace:Raycast(part.Position, direction*10, params)
+	self.Raycast = result;
 
 
 	if result then
