@@ -8,6 +8,10 @@ TouchGenius is a better version of the basic touch events for 3d objects
 Touched and TouchEnded works more reliably now but if you wish to use the old ones there's the DefaultTouched and DefaultTouchEnded events
 
 
+- RawResults
+RawResults is an option in TouchParams (TouchParams.RawResult) that decides if it should return a TouchResult or a normal Instance, by default it's false
+
+
 - DefaulTouched and DefaultTouchEnded
 DefaultTouched and DefaultTouchEnded still uses TouchResult but they work on the old roblox systems for the two
 
