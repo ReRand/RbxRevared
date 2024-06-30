@@ -8,6 +8,7 @@ TouchResult is what's returned from the TouchGenius events if the RawResults par
 ]]
 
 
+local Revared = _G.Revared;
 
 
 local TouchResult = {};
@@ -36,6 +37,26 @@ function TouchResult.new(touchGenius, hit, state)
 	end
 	
 	local distance = (part.Position - hit.Position).Magnitude
+	local player = nil;
+	local human = nil;
+	local character = nil;
+	
+	local g = game;
+	
+	pcall(function()
+		for _, d in pairs(Revared:GetDirectoryOf(hit)) do
+			g = g:FindFirstChild(d);
+
+			if g and g:FindFirstChild("Humanoid") then
+				character = g
+				human = g:FindFirstChild("Humanoid");
+			end
+
+			if g and game.Players:GetPlayerFromCharacter(g) then
+				player = game.Players:GetPlayerFromCharacter(g)
+			end
+		end
+	end)
 	
 	
 	local self = setmetatable({
@@ -45,6 +66,10 @@ function TouchResult.new(touchGenius, hit, state)
 		Position = hit.Position,
 		Rotation = hit.Rotation,
 		CFrame = hit.CFrame,
+		
+		Player = player,
+		Character = character,
+		Humanoid = human,
 		
 		SideTouched = surface,
 		Normal = Vector3.new(),
