@@ -364,6 +364,14 @@ end
 
 
 
+function TouchGenius.sift(part, params, ...)
+	local tg = TouchGenius.new(part, params);
+	tg.Sifts = {...};
+	return tg;
+end
+
+
+
 function TouchGenius:IsSifted(part)
 	for _, f in pairs(self.Sifts) do
 		if f == part.Name then
