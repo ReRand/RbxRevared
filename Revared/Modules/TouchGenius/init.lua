@@ -248,6 +248,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 			local origin = hit
 
 			if self:IsFiltered(origin, self.TouchParams.TouchFilter, self.TouchParams.TouchFilterType) then return end;
+			if #self.Sifts > 0 and not self:IsSifted(origin) then return end;
 
 			if not self.TouchParams.RawResults then
 				hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchEnd);
