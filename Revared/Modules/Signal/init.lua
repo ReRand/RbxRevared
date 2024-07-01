@@ -16,9 +16,11 @@ end
 
 function Signal.new()
 	local self = setmetatable({
+
 		_bindableEvent = Instance.new("BindableEvent"),
 		_cooldown = false,
 		_queue = {}
+
 	}, Signal)
 
 
