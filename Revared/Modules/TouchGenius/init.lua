@@ -114,7 +114,10 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 		PlayerTouchMaintained = RBXScriptSignal.new(),
 		HumanTouchMaintained = RBXScriptSignal.new(),
 		
-		AsyncWaiting = {}
+		AsyncWaiting = {},
+		
+		SiftsInstances = {},
+		Sifts = touchParams.Sifts
 		
 		
 	}, TouchGenius);
@@ -128,6 +131,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 			local human = nil;
 
 			if self:IsFiltered(origin, self.TouchParams.TouchFilter, self.TouchParams.TouchFilterType) then return end;
+			if #self.Sifts > 0 and not self:IsSifted(origin) then return end;
 
 			if not self.TouchParams.RawResults then
 				hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchBegin);
@@ -256,7 +260,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 	
 	
 	
-	if self.TouchParams.Maintain then
+	--[[if self.TouchParams.Maintain then
 		coroutine.wrap(function()
 			while task.wait(self.TouchParams.MaintainLoopDelay or 0) do
 				if self.TouchParams.Maintain then
@@ -279,7 +283,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 				end
 			end
 		end)();
-	end
+	end]]
 	
 	
 	return self;
@@ -345,6 +349,29 @@ end
 
 function TouchGenius:CreateTouchResult(part, state)
 	return TouchResult.new(self, part, state);
+end
+
+
+
+function TouchGenius:Sift(...)
+	local tg = TouchGenius.new(self.Part, self.TouchParams);
+	tg.Sifts = {...};
+	
+	table.insert(self.SiftsInstances, tg);
+	
+	return tg;
+end
+
+
+
+function TouchGenius:IsSifted(part)
+	for _, f in pairs(self.Sifts) do
+		if f == part.Name then
+			return true;
+		end
+	end
+	
+	return false;
 end
 
 
