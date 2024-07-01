@@ -21,15 +21,6 @@ RawResults is an option in TouchParams (TouchParams.RawResult) that decides if i
 DefaultTouched and DefaultTouchEnded still uses TouchResult but they work on the old roblox systems for the two
 
 
-- TouchMaintained
-TouchMaintained is togglable with TouchParams (TouchParams.Maintain) and gets fired constantly while something is touching the object
-the time between checks is customizable with TouchParams (TouchParams.MaintainLoopDelay)
-
-
-- AsyncWaiting
-the AsyncWaiting array is for the fixed Touched and TouchEnded
-it's there so that Touched is fired once and then asynchronously waits until IsTouched is false to fire the TouchEnded event 
-
 
 Example:
 
@@ -102,6 +93,9 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 		DefaultPlayerTouchEnded = RBXScriptSignal.new(),
 		DefaultHumanTouched = RBXScriptSignal.new(),
 		DefaultHumanTouchEnded = RBXScriptSignal.new(),
+		DefaultObjectTouched = RBXScriptSignal.new(),
+		DefaultObjectTouchEnded = RBXScriptSignal.new(),
+		
 		
 		Touched = RBXScriptSignal.new(),
 		TouchEnded = RBXScriptSignal.new(),
@@ -109,10 +103,14 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 		PlayerTouchEnded = RBXScriptSignal.new(),
 		HumanTouched = RBXScriptSignal.new(),
 		HumanTouchEnded = RBXScriptSignal.new(),
+		ObjectTouched = RBXScriptSignal.new(),
+		ObjectTouchEnded = RBXScriptSignal.new(),
 		
-		TouchMaintained = RBXScriptSignal.new(),
+		
+		--[[TouchMaintained = RBXScriptSignal.new(),
 		PlayerTouchMaintained = RBXScriptSignal.new(),
 		HumanTouchMaintained = RBXScriptSignal.new(),
+		ObjectTouchMaintained = RBXScriptSignal.new(),]]
 		
 		AsyncWaiting = {},
 		
@@ -147,6 +145,10 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 					player = hit.Player;
 					self.DefaultPlayerTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
 				end
+				
+				if not hit.Humanoid and not hit.Player then
+					self.DefaultObjectTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+				end
 			else
 				self.DefaultTouched:Fire(origin, TouchGenius.TouchStates.TouchBegin);
 			end
@@ -167,6 +169,10 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 							if player then
 								player = hit.Player;
 								self.PlayerTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+							end
+							
+							if not human and not player then
+								self.ObjectTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
 							end
 						else
 							self.Touched:Fire(origin, TouchGenius.TouchStates.TouchBegin);
@@ -194,6 +200,10 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 										player = hit.Player;
 										self.PlayerTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
 									end
+									
+									if not human and not player then
+										self.ObjectTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+									end
 								else
 									self.TouchEnded:Fire(origin, TouchGenius.TouchStates.TouchEnd);
 								end
@@ -212,6 +222,7 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 						repeat task.wait(self.TouchParams.AsyncWaitingLoopDelay or 0) until self:IsTouching(origin);
 						repeat task.wait(self.TouchParams.AsyncWaitingLoopDelay or 0) until not self:IsTouching(origin);
 
+
 						coroutine.wrap(function()
 							if not self.TouchParams.RawResults then
 								hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchEnd);
@@ -225,6 +236,10 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 								if player then
 									player = hit.Player;
 									self.PlayerTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+								end
+								
+								if not human and not player then
+									self.ObjectTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
 								end
 							else
 								self.TouchEnded:Fire(origin, TouchGenius.TouchStates.TouchEnd);
@@ -252,11 +267,25 @@ function TouchGenius.new(part: Instance, touchParams: TouchParams)
 
 			if not self.TouchParams.RawResults then
 				hit = self:CreateTouchResult(origin, TouchGenius.TouchStates.TouchEnd);
-				self.DefaultTouched:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
+				
+				if hit.Humanoid then
+					self.DefaultHumanTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+				end
+
+				if hit.Player then
+					self.DefaultPlayerTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+				end
+
+				if not hit.Humanoid and not hit.Player then
+					self.DefaultObjectTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchBegin);
+				end
+				
+				self.DefaultTouchEnded:Fire(hit, origin, TouchGenius.TouchStates.TouchEnd);
 			else
-				self.DefaultTouched:Fire(origin, TouchGenius.TouchStates.TouchEnd);
+				self.DefaultTouchEnded:Fire(origin, TouchGenius.TouchStates.TouchEnd);
 			end
-		end)()
+			
+		end)();
 	end)
 	
 	
