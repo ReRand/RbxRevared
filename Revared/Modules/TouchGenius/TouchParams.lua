@@ -78,6 +78,18 @@ return (function(TouchGenius)
 			table.insert(self.MaintainFilter, instances);
 		end
 	end
+	
+	
+	
+	function TouchParams:AddToTouchFilter(instances)
+		if typeof(instances) == "table" then
+			for _, i in pairs(instances) do
+				table.insert(self.TouchFilter, i);
+			end
+		else
+			table.insert(self.TouchFilter, instances);
+		end
+	end
 
 
 
