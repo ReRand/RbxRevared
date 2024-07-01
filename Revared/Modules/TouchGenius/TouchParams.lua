@@ -9,8 +9,9 @@ TouchParams customize how the TouchGenius should behave and should ONLY be acces
 - TouchFilterType (Enum.RaycastFilterType) enum accessed through TouchGenius.TouchFilterTypes that decides if filtered things in touch events should be included or excluded, default Enum.RaycastFilterType.Exclude
 - RawResults (Boolean) value that decides if events should return a TouchResult or a normal Instance, default false
 - AsyncWaitingLoopDelay (Number) value that decides how long it should wait inbetween checks for TouchEnded, default 0
-- PlayerCheck (Boolean) value that decides if TouchResult should check if the part belongs to a player's humanoid character
-- Human Check (Boolean) value that decides if TouchResult should check if the part belongs to a humanoid character
+- PlayerCheck (Boolean) value that decides if TouchResult should check if the part belongs to a player's humanoid character, default true
+- Human Check (Boolean) value that decides if TouchResult should check if the part belongs to a humanoid character, default true
+- Sifts (Table) table that the TouchGenius calls from for the initial table for part name sifting, default {}
 
 ]]
 
@@ -42,6 +43,8 @@ return (function(TouchGenius)
 		if not paramTable.PlayerCheck then paramTable.PlayerCheck = true end;
 		if not paramTable.HumanCheck then paramTable.HumanCheck = true end;
 		
+		if not paramTable.Sifts or (paramTable.Sifts and typeof(paramTable.Sifts) ~= "table") then paramTable.Sifts = {} end;
+		
 		
 		local self = setmetatable({
 			Maintain = paramTable.Maintain,
@@ -60,7 +63,9 @@ return (function(TouchGenius)
 			PlayerCheck = paramTable.PlayerCheck,
 			HumanCheck = paramTable.HumanCheck,
 			
-			ParamTable = paramTable
+			ParamTable = paramTable,
+			
+			Sifts = paramTable.Sifts
 			
 		}, TouchParams);
 
@@ -89,6 +94,32 @@ return (function(TouchGenius)
 		else
 			table.insert(self.TouchFilter, instances);
 		end
+	end
+	
+	
+	
+	function TouchParams:RemoveFromMaintainFilter(instances)
+		for _, ins in pairs(instances) do
+			for i, mins in pairs(self.MaintainFilter) do
+				if ins == mins then
+					table.remove(self.MaintainFilter, i);
+				end
+			end
+		end
+		return instances;
+	end
+
+
+
+	function TouchParams:RemoveFromTouchFilter(instances)
+		for _, ins in pairs(instances) do
+			for i, mins in pairs(self.TouchFilter) do
+				if ins == mins then
+					table.remove(self.TouchFilter, i);
+				end
+			end
+		end
+		return instances;
 	end
 
 
