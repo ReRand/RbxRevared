@@ -4,8 +4,8 @@
 	"tree": {
 		"$className": "DataModel",
 		
-		"Workspace": {
-			"$className": "Workspace",
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
 			
 			"Revared": {
 				"$path": "Revared/Main",
