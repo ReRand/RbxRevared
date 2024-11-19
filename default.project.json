@@ -25,7 +25,11 @@
 
 				"Modules": {
 					"$className": "Folder",
-					"$path": "Revared/Modules"
+					"$path": "Revared/Modules",
+
+					"ClassJS": {
+						"$path": "ClassJS/classjs"
+					}
 				}
 			}
 		}

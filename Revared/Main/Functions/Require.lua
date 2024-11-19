@@ -1,11 +1,11 @@
 return (function(Revared)
 
         
-	function Revared:Require(rawModule)
+	function Revared:Require(rawModule, ...)
         local module = require(rawModule);
         
         if module["Init"] then
-            module:Init(Revared);
+            module:Init(Revared, table.unpack(...));
         end
 
         return module;
