@@ -2,6 +2,6 @@
 # git mv A B to change the name of submodules
 
 
-[submodule "LuaClassJS"]
+[submodule "ClassJS"]
 	path = ClassJS
 	url = https://github.com/ReRand/LuaClassJS
