@@ -3,5 +3,5 @@
 
 
 [submodule "LuaClassJS"]
-	path = Revared/LuaClassJS
+	path = LuaClassJS
 	url = https://github.com/ReRand/LuaClassJS
