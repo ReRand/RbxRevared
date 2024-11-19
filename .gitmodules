@@ -1,0 +1,5 @@
+# please remember me that you can use git mv A B to change the name of submodules
+
+[submodule "ClassJS"]
+	path = Revared/ClassJS
+	url = https://github.com/ReRand/LuaClassJS
