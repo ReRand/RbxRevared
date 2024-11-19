@@ -5,4 +5,4 @@ function AddUID(child)
 	child.ChildAdded:Connect(AddUID);
 end
 
-game.ChildAdded:Connect(AddUID)
+game.DescendantAdded:Connect(AddUID)
