@@ -3,5 +3,5 @@
 
 
 [submodule "LuaClassJS"]
-	path = LuaClassJS
+	path = ClassJS
 	url = https://github.com/ReRand/LuaClassJS
