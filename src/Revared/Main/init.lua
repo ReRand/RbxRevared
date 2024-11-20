@@ -12,7 +12,8 @@ if _G.Revared then return _G.Revared end;
 local Revared = {
 	Modules = {},
 	Experiments = {},
-	CaptionStore = {}
+	CaptionStore = {},
+	Events = game.ReplicatedStorage.GameEvents.Modules
 };
 
 

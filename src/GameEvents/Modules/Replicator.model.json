@@ -1,0 +1,9 @@
+{
+    "ClassName": "Folder",
+
+    "Children": [
+        { "Name": "GetServerFromClient", "ClassName": "RemoteEvent" },
+        { "Name": "GetClientFromServer", "ClassName": "RemoteEvent" }
+    ]
+    
+}
