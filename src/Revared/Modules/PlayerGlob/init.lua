@@ -1,16 +1,29 @@
 local Revared = _G.Revared;
+local Signal = Revared:Require('Signal');
 
 local PlayerGlob = {
 	PlayerSounds = require(script.PlayerSounds),
-	Events = Revared.Events.PlayerGlob
+	Events = Revared.Events.PlayerGlob,
+
+	Healed = {
+		Server = Signal.new(),
+		Client = Signal.new(),
+		Finally = Signal.new()
+	},
+
+	Damaged = {
+		Server = Signal.new(),
+		Client = Signal.new(),
+		Finally = Signal.new()
+	}
 };
 
-local rs = game:GetService("RunService");
+
+local functions = script.Methods;
 
 
-function PlayerGlob:DisableControls(player)
-	if rs:IsClient() then
-		Events:FireServer()
+for _, f in ipairs(functions:GetChildren()) do
+	require(f)(PlayerGlob);
 end
 
 

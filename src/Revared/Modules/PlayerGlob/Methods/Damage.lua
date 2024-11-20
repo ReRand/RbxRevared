@@ -17,10 +17,10 @@ local server = RunService:IsServer();
 
 
 -- stuff
-return (function(GlobalSide)
+return (function(PlayerGlob)
 
         
-	function GlobalSide:Damage(victim, amount)
+	function PlayerGlob:Damage(victim, amount)
 		if victim:IsA("Humanoid") then victim = victim.Parent;
 		elseif victim:IsA("Player") then victim = victim.Character or victim.CharacterAdded:Wait(); end
 			
