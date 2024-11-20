@@ -55,6 +55,11 @@
 						"CameraShaker": {
 							"$path": "CameraShaker/src",
 							"$className": "ModuleScript"
+						},
+
+						"ProfileStore": {
+							"$path": "ProfileStore",
+							"$className": "ModuleScript"
 						}
 					}
 				}
