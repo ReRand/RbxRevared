@@ -1,7 +1,12 @@
 -- events
-local clientEv = script.Parent.PingPong.Client;
-local finalEv = script.Parent.PingPong.Finally;
-local GlobalSide = require(script.Parent.Parent.Parent);
+
+local rep = game.ReplicatedStorage;
+
+
+local clientEv = rep.GameEvents.GlobalSide.Hela.Client;
+local finalEv = rep.GameEvents.GlobalSide.Heal.Finally;
+local Revared = require(rep.Modules.Revared)
+local GlobalSide = Revared:Require("GlobalSide");
 
 
 local player = game.Players.LocalPlayer;
