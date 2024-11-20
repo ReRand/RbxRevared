@@ -50,6 +50,11 @@
 						"ClassJS": {
 							"$path": "ClassJS/classjs",
 							"$className": "ModuleScript"
+						},
+
+						"CameraShaker": {
+							"$path": "CameraShaker/src",
+							"$className": "ModuleScript"
 						}
 					}
 				}

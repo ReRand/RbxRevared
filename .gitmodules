@@ -5,6 +5,6 @@
 [submodule "ClassJS"]
 	path = ClassJS
 	url = https://github.com/ReRand/LuaClassJS
-[submodule "RbxCameraShaker"]
+[submodule "CameraShaker"]
 	path = CameraShaker
 	url = https://github.com/Sleitnick/RbxCameraShaker
