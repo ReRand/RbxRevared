@@ -1,5 +1,5 @@
 -- events
-local clientEv = script.Parent.PingPong.Client;
+local clientEv = game.ReplicatedStorage.PingPong.Client;
 local serverEv = script.Parent.PingPong.Server;
 local referServerEv = script.Parent.PingPong.ReferServer;
 local finalEv = script.Parent.PingPong.Finally;

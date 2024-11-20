@@ -3,32 +3,46 @@
 	
 	"tree": {
 		"$className": "DataModel",
+
+		"StarterCharacterScripts": {
+			"$className": "StarterCharacterScripts",
+			"Modules": { "$className": "Folder", "$path": "StarterCharacterScripts" }
+		},
 		
+
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
-			
-			"Revared": {
-				"$path": "Revared/Main",
 
+			"Values": { "$className": "ModuleScript", "$path": "Values" },
 
-				"Scripts": {
+			"Modules": {
+				"$className": "Folder",
+
+				"Revared": {
 					"$className": "Folder",
-					"$path": "Revared/Scripts"
-				},
+					"$path": "Revared/Main",
 
 
-				"Experiments": {
-					"$className": "Folder",
-					"$path": "Revared/Experiments"
-				},
-				
+					"Scripts": {
+						"$className": "Folder",
+						"$path": "Revared/Scripts"
+					},
 
-				"Modules": {
-					"$className": "Folder",
-					"$path": "Revared/Modules",
 
-					"ClassJS": {
-						"$path": "ClassJS/classjs"
+					"Experiments": {
+						"$className": "Folder",
+						"$path": "Revared/Experiments"
+					},
+					
+
+					"Modules": {
+						"$className": "Folder",
+						"$path": "Revared/Modules",
+
+						"ClassJS": {
+							"$path": "ClassJS/classjs",
+							"$className": "ModuleScript"
+						}
 					}
 				}
 			}
