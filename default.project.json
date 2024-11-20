@@ -58,7 +58,7 @@
 						},
 
 						"ProfileStore": {
-							"$path": "ProfileStore",
+							"$path": "ProfileStore/ProfileStore.luau",
 							"$className": "ModuleScript"
 						}
 					}
