@@ -1,6 +1,6 @@
 <a href="https://github.com/ReRand/RbxRevared"><img height=100 src="https://github.com/ReRand/RbxRevared/blob/main/Assets/Revared.png?raw=true" alt="Banner">
 
-A powerful open source developer toolkit used in ReRand Roblox games
+A powerful toolkit for Roblox game development made for ReRand Studios games including the Revared module manager as well as a Values system and much more
 - Advanced Triggers
 - Client-side badges and data stores
 - Global-side stuff
