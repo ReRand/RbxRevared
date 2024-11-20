@@ -1,7 +1,12 @@
 -- events
-local clientEv = script.PingPong.Client;
-local serverEv = script.PingPong.Server;
-local referServerEv = script.PingPong.ReferServer;
+
+local rep = game.ReplicatedStorage;
+local events = rep.GameEvents.GlobalSide.Heal;
+
+
+local clientEv = events.Client;
+local serverEv = events.Server;
+local referServerEv = events.Server;
 
 
 -- run context

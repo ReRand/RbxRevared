@@ -1,10 +1,11 @@
 -- events
 
 local rep = game.ReplicatedStorage;
+local events = rep.GameEvents.GlobalSide.Damage;
 
 
-local clientEv = rep.GameEvents.GlobalSide.Hela.Client;
-local finalEv = rep.GameEvents.GlobalSide.Heal.Finally;
+local clientEv = events.Client;
+local finalEv = events.Finally;
 local Revared = require(rep.Modules.Revared)
 local GlobalSide = Revared:Require("GlobalSide");
 
@@ -12,7 +13,7 @@ local GlobalSide = Revared:Require("GlobalSide");
 local player = game.Players.LocalPlayer;
 
 
-function healInit(victim, amount, new, old)
+function dmgInit(victim, amount, new, old)
 	local victimHuman = victim:WaitForChild("Humanoid");
     
 	victimHuman.Health = new;
@@ -24,11 +25,11 @@ function healInit(victim, amount, new, old)
 			OldHealth = old
 	};
 	
-    GlobalSide.Healed.Client:Fire(player, res);
-	
-    GlobalSide.Healed.Finally:Fire(res);
+    GlobalSide.Damaged.Client:Fire(player, res);
+    
+	GlobalSide.Damaged.Finally:Fire(res);
 	finalEv:FireServer(res);
 end
 
 
-clientEv:Connect(healInit);
+clientEv:Connect(dmgInit);

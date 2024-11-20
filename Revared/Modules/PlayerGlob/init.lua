@@ -1,5 +1,6 @@
 local PlayerGlob = {
-	PlayerSounds = require(script.PlayerSounds)
+	PlayerSounds = require(script.PlayerSounds),
+	Events = game.ReplicatedStorage.GameEvents.Modules.PlayerGlob
 };
 
 local rs = game:GetService("RunService");
@@ -7,7 +8,7 @@ local rs = game:GetService("RunService");
 
 function PlayerGlob:Respawn(player)
 	if rs:IsClient() then
-		script.Events.RespawnServer:FireServer();
+		PlayerGlob.Events.RespawnServer:FireServer();
 	else
 		if workspace:FindFirstChild(player.Name) then
 			workspace[player.Name]:Destroy();	
@@ -22,7 +23,7 @@ end
 
 function PlayerGlob:RespawnWithDescription(player, desc)
 	if rs:IsClient() then
-		script.Events.RespawnWHDServer:FireServer(desc);
+		PlayerGlob.Events.RespawnWHDServer:FireServer(desc);
 	else
 		if workspace:FindFirstChild(player.Name) then
 			workspace[player.Name]:Destroy();	

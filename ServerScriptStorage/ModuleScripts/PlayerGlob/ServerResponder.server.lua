@@ -1,3 +1,5 @@
+local events = game.ReplicatedStorage.
+
 script.Parent.Events.RespawnServer.OnServerEvent:Connect(function(player)
 	if workspace:FindFirstChild(player.Name) then
 		workspace[player.Name]:Destroy();	

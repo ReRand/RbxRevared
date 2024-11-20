@@ -6,7 +6,17 @@
 
 		"StarterCharacterScripts": {
 			"$className": "StarterCharacterScripts",
-			"Modules": { "$className": "Folder", "$path": "StarterCharacterScripts" }
+			"ModuleScripts": { "$className": "Folder", "$path": "StarterCharacterScripts/ModuleScripts" }
+		},
+
+		"StarterPlayerScripts": {
+			"$className": "StarterPlayerScripts",
+			"ModuleScripts": { "$className": "Folder", "$path": "StarterPlayerScripts/ModuleScripts" }
+		},
+
+		"ServerScriptStorage": {
+			"$className": "ServerScriptStorage",
+			"ModuleScripts": { "$className": "Folder", "$path": "ServerScriptStorage/ModuleScripts" }
 		},
 		
 
@@ -14,6 +24,10 @@
 			"$className": "ReplicatedStorage",
 
 			"Values": { "$className": "ModuleScript", "$path": "Values" },
+			"GameEvents": { "$className": "Folder", "Modules": {
+				"$className": "Folder",
+				"$path": "GameEvents/Modules"
+			}},
 
 			"Modules": {
 				"$className": "Folder",
@@ -21,12 +35,6 @@
 				"Revared": {
 					"$className": "Folder",
 					"$path": "Revared/Main",
-
-
-					"Scripts": {
-						"$className": "Folder",
-						"$path": "Revared/Scripts"
-					},
 
 
 					"Experiments": {

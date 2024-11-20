@@ -1,11 +1,16 @@
 -- events
-local clientEv = game.ReplicatedStorage.PingPong.Client;
-local serverEv = script.Parent.PingPong.Server;
-local referServerEv = script.Parent.PingPong.ReferServer;
-local finalEv = script.Parent.PingPong.Finally;
+
+local rep = game.ReplicatedStorage
+local events = rep.GameEvents.GlobalSide.Damage;
+
+local clientEv = events.Client;
+local serverEv = events.Server;
+local referServerEv = events.ReferServer;
+local finalEv = events.Finally;
 
 
-local GlobalSide = require(script.Parent.Parent.Parent);
+local Revared = require(rep.Modules.Revared)
+local GlobalSide = Revared:Require("GlobalSide");
 
 
 function dmgInit(victim, amount)

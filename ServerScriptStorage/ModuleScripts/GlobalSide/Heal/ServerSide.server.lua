@@ -1,10 +1,15 @@
 -- events
-local clientEv = script.Parent.PingPong.Client;
-local serverEv = script.Parent.PingPong.Server;
-local referServerEv = script.Parent.PingPong.ReferServer;
-local finalEv = script.Parent.PingPong.Finally;
+local rep = game.ReplicatedStorage
+local events = rep.GameEvents.GlobalSide.Heal;
 
-local GlobalSide = require(script.Parent.Parent.Parent);
+local clientEv = events.Client;
+local serverEv = events.Server;
+local referServerEv = events.ReferServer;
+local finalEv = events.Finally;
+
+
+local Revared = require(rep.Modules.Revared)
+local GlobalSide = Revared:Require("GlobalSide");
 
 
 function healInit(victim, amount)
