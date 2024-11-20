@@ -1,9 +1,17 @@
+local Revared = _G.Revared;
+
 local PlayerGlob = {
 	PlayerSounds = require(script.PlayerSounds),
-	Events = game.ReplicatedStorage.GameEvents.Modules.PlayerGlob
+	Events = Revared.Events.PlayerGlob
 };
 
 local rs = game:GetService("RunService");
+
+
+function PlayerGlob:DisableControls(player)
+	if rs:IsClient() then
+		Events:FireServer()
+end
 
 
 function PlayerGlob:Respawn(player)
