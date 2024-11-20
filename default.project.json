@@ -6,27 +6,27 @@
 
 		"StarterCharacterScripts": {
 			"$className": "StarterCharacterScripts",
-			"ModuleScripts": { "$className": "Folder", "$path": "StarterCharacterScripts/ModuleScripts" }
+			"ModuleScripts": { "$className": "Folder", "$path": "src/StarterCharacterScripts/ModuleScripts" }
 		},
 
 		"StarterPlayerScripts": {
 			"$className": "StarterPlayerScripts",
-			"ModuleScripts": { "$className": "Folder", "$path": "StarterPlayerScripts/ModuleScripts" }
+			"ModuleScripts": { "$className": "Folder", "$path": "src/StarterPlayerScripts/ModuleScripts" }
 		},
 
 		"ServerScriptStorage": {
 			"$className": "ServerScriptStorage",
-			"ModuleScripts": { "$className": "Folder", "$path": "ServerScriptStorage/ModuleScripts" }
+			"ModuleScripts": { "$className": "Folder", "$path": "src/ServerScriptStorage/ModuleScripts" }
 		},
 		
 
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
 
-			"Values": { "$className": "ModuleScript", "$path": "Values" },
+			"Values": { "$className": "ModuleScript", "$path": "src/Values" },
 			"GameEvents": { "$className": "Folder", "Modules": {
 				"$className": "Folder",
-				"$path": "GameEvents/Modules"
+				"$path": "src/GameEvents/Modules"
 			}},
 
 			"Modules": {
@@ -34,18 +34,18 @@
 
 				"Revared": {
 					"$className": "Folder",
-					"$path": "Revared/Main",
+					"$path": "src/Revared/Main",
 
 
 					"Experiments": {
 						"$className": "Folder",
-						"$path": "Revared/Experiments"
+						"$path": "src/Revared/Experiments"
 					},
 					
 
 					"Modules": {
 						"$className": "Folder",
-						"$path": "Revared/Modules",
+						"$path": "src/Revared/Modules",
 
 						"ClassJS": {
 							"$path": "ClassJS/classjs",
