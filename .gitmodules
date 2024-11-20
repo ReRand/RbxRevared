@@ -8,3 +8,6 @@
 [submodule "CameraShaker"]
 	path = CameraShaker
 	url = https://github.com/Sleitnick/RbxCameraShaker
+[submodule "ProfileStore"]
+	path = ProfileStore
+	url = https://github.com/MadStudioRoblox/ProfileStore
