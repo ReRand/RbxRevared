@@ -23,21 +23,19 @@ function Nodes.Entity.New(info : Nodes._EntityInfo?) : Nodes._Entity?
 		Inventory = info.Inventory or Nodes.Collection.New(),
 
 		Killed = Nodes.Signal.New()
-	}
+	} :: Nodes._Entity
 
 	return Nodes.Init(self, Nodes.Entity) :: Nodes._Entity
 end
 
 
 function Nodes.Entity.Prototype:Spawn(character: Model?)
-
+	if RunService:IsClient() then return end
 end
 
 
 function Nodes.Entity.Prototype:Kill(reason)
-	if RunService:IsServer() then
-		print(reason)
-	end
+	if RunService:IsClient() then return end
 end
 
 
