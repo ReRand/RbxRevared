@@ -22,7 +22,7 @@ function Nodes.Entity.New(info : Nodes._EntityInfo?) : Nodes._Entity?
 
 		Inventory = info.Inventory or Nodes.Collection.New(),
 
-		Killed = 
+		Killed = Nodes.Signal.New()
 	}
 
 	return Nodes.Init(self, Nodes.Entity) :: Nodes._Entity

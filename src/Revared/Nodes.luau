@@ -69,8 +69,9 @@ export type _BaseStaticNode = {
 }
 
 
-export type _Signal<T> = LemonSignal.Signal<T>
-Nodes.Signal = LemonSignal.
+
+export type _Signal<T> = LemonSignal.Signal
+Nodes.Signal = LemonSignal
 
 
 
@@ -109,13 +110,13 @@ export type _Entity = _Node & {
 	Health: number,
 	Gravity: number,
 	
-	Standing: bool,
-	Jumping: bool,
+	Standing: boolean,
+	Jumping: boolean,
 
-	Inventory: _Collection<_Item>,
+	Inventory: _Collection<number, _Item>,
 
 	Kill: (self: any, reason: string) -> any,
-	Killed: LemonSignal.Signal<string>
+	Killed: _Signal<string>
 }
 
 
@@ -177,33 +178,6 @@ export type _Item = _Node & {
 }
 
 
-
---[[ Ace Projectile ]]--
--- projectiles fired from weapons
-do local n, t = Nodes.New("Projectile", "Node") Nodes[n] = t :: _ProjectileStatic end
-export type _ProjectileStatic = _BaseStaticNode & {
-	New : () -> _Projectile,
-}
-export type _Projectile = _Node & {
-	Name : string,
-	Id: string,
-
-	Info : _ProjectileInfo,
-
-	Hit : LemonSignal.Signal<Part>
-}
-
-
-
---[[ Ace Projectile Info ]]--
--- info about projectiles
-do local n, t = Nodes.New("ProjectileInfo", "Node") Nodes[n] = t :: _ProjectileInfoStatic end
-export type _ProjectileInfoStatic = _BaseStaticNode & {
-	New : (info: _ProjectileInfo) -> _ProjectileInfo,
-}
-export type _ProjectileInfo = _Node & {
-
-}
 
 --[[ Ace Projectile ]]--
 -- projectiles fired from weapons
