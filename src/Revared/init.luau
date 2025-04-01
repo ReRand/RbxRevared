@@ -14,7 +14,8 @@ local Revared = {
     Nodes = script.Nodes
 }
 
-local Nodes = require(script.Nodes)
+local Package = require(script.Package)
+local Nodes = require(script.Nodes) :: Package._NodePackage
 
 
 Revared.CreateNode = Nodes.Spawn
