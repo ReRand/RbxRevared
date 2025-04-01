@@ -1,0 +1,22 @@
+name: update wiki
+on:
+  push:
+    paths:
+      - .wiki/**
+      - .github/workflows/wiki.yml
+
+concurrency:
+  group: update wiki
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-wiki:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: Andrew-Chen-Wang/github-wiki-action@v4
+        with:
+            path: ./.wiki

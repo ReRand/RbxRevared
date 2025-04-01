@@ -1,8 +1,0 @@
-{
-    "ClassName": "Folder",
-
-    "Children": [
-        { "Name": "valuesLoaded", "ClassName": "BoolValue" }
-    ]
-    
-}

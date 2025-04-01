@@ -4,64 +4,57 @@
 	"tree": {
 		"$className": "DataModel",
 
-		"StarterCharacterScripts": {
-			"$className": "StarterCharacterScripts",
-			"ModuleScripts": { "$className": "Folder", "$path": "src/StarterCharacterScripts/ModuleScripts" }
-		},
-
-		"StarterPlayerScripts": {
-			"$className": "StarterPlayerScripts",
-			"ModuleScripts": { "$className": "Folder", "$path": "src/StarterPlayerScripts/ModuleScripts" }
-		},
-
-		"ServerScriptStorage": {
-			"$className": "ServerScriptStorage",
-			"ModuleScripts": { "$className": "Folder", "$path": "src/ServerScriptStorage/ModuleScripts" }
-		},
-		
-
 		"ReplicatedStorage": {
-			"$className": "ReplicatedStorage",
-
-			"Values": { "$className": "ModuleScript", "$path": "src/Values" },
-			"GameEvents": { "$className": "Folder", "Modules": {
-				"$className": "Folder",
-				"$path": "src/GameEvents/Modules"
-			}},
-
 			"Modules": {
 				"$className": "Folder",
 
+				"LemonSignal": {
+					"$className": "ModuleScript",
+					"$path": "LemonSignal.luau"
+				},
+
+				"CameraShaker": {
+					"$className": "ModuleScript",
+					"$path": "CameraShaker/src/CameraShaker"
+				},
+
+				"ProfileService": {
+					"$className": "ModuleScript",
+					"$path": "ProfileService/ProfileService.lua"
+				},
+
+				"Revared": {
+					"$className": "ModuleScript",
+					"$path": "src/Revared"
+				}
+			}
+		},
+
+		"ServerStorage": {
+			"Revared": {
+				"$className": "Folder",
+				"$path": "src/ServerStorage"
+			}
+		},
+
+		"ServerScriptService": {
+			"Revared": {
+				"$className": "Folder",
+				"$path": "src/ServerScriptService"
+			}
+		},
+
+		"StarterPlayer": {
+			"StarterCharacterScripts": {
 				"Revared": {
 					"$className": "Folder",
-					"$path": "src/Revared/Main",
-
-
-					"Experiments": {
-						"$className": "Folder",
-						"$path": "src/Revared/Experiments"
-					},
-					
-
-					"Modules": {
-						"$className": "Folder",
-						"$path": "src/Revared/Modules",
-
-						"ClassJS": {
-							"$path": "ClassJS/classjs",
-							"$className": "ModuleScript"
-						},
-
-						"CameraShaker": {
-							"$path": "CameraShaker/src",
-							"$className": "ModuleScript"
-						},
-
-						"ProfileStore": {
-							"$path": "ProfileStore/ProfileStore.luau",
-							"$className": "ModuleScript"
-						}
-					}
+					"$path": "src/StarterCharacterScripts"
+				}
+			},
+			"StarterPlayerScripts": {
+				"Revared": {
+					"$className": "Folder",
+					"$path": "src/StarterPlayerScripts"
 				}
 			}
 		}

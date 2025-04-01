@@ -1,8 +1,0 @@
-{
-    "ClassName": "Folder",
-
-    "Children": [
-        { "Name": "Client" "ClassName": "RemoteEvent" },
-        { "Name": "Server" "ClassName": "RemoteEvent" },
-    ]
-}
