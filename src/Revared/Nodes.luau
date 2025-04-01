@@ -69,6 +69,10 @@ export type _BaseStaticNode = {
 }
 
 
+export type _Signal<T> = LemonSignal.Signal<T>
+Nodes.Signal = LemonSignal.
+
+
 
 --[[ Ace Class ]]--
 -- extends into almost every class
@@ -95,21 +99,23 @@ export type _Node = {
 -- entity class covering ai and players
 do local n, t = Nodes.New("Entity", "Node") Nodes[n] = t :: _EntityStatic end
 export type _EntityStatic = _BaseStaticNode & {
-	New : (base: Player | Model, info : _EntityInfo?) -> _Entity?,
+	New : (info : _EntityInfo?) -> _Entity?,
 }
 export type _Entity = _Node & {
-	Base: Player | Model,
-	IsPlayer: boolean,
-	Player: Player?,
+	StarterCharacter: Model?,
 	Character: Model?,
+	Hitbox: Model?,
+
+	Health: number,
+	Gravity: number,
+	
+	Standing: bool,
+	Jumping: bool,
 
 	Inventory: _Collection<_Item>,
-	Info: _EntityInfo,
 
 	Kill: (self: any, reason: string) -> any,
-
-	Killed: LemonSignal.Signal<string>,
-	Suicided: LemonSignal.Signal<string, string>
+	Killed: LemonSignal.Signal<string>
 }
 
 
@@ -121,6 +127,7 @@ export type _EntityInfoStatic = _BaseStaticNode & {
 	New : (info: _EntityInfo?) -> _EntityInfo,
 }
 export type _EntityInfo = _Node & {
+	Kill : (reason: string) -> nil,
 
 }
 

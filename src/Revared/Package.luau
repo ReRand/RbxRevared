@@ -17,7 +17,8 @@ export type _NodePackage = {
 	ExplosionInfo: Nodes._ExplosionInfoStatic,
 	FireInfo: Nodes._FireInfoStatic,
 	Explosion: Nodes._ExplosionStatic,
-	Fire: Nodes._FireStatic
+	Fire: Nodes._FireStatic,
+	Signal: Nodes._Signal
 }
 
 return {}

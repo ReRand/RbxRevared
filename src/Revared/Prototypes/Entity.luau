@@ -7,27 +7,30 @@ local Nodes = require(script.Parent.Parent.Nodes)
 local RunService = game:GetService("RunService")
 
 
-function Nodes.Entity.New(base: Player | Model, info : Nodes._EntityInfo?) : Nodes._Entity?
+function Nodes.Entity.New(info : Nodes._EntityInfo?) : Nodes._Entity?
 	if RunService:IsClient() then return end
 	info = info or Nodes.EntityInfo.New()
 
 	local self = {
-		Base = base,
-		Info = info,
+		StarterCharacter = info.StarterCharacter,
 
-		Health = 100,
-		Gravity = 9.8,
-		Metadata = info and info.Metadata or {},
-
-		Dashing = false,
-		Standing = false,
+		Health = info.Health or 100,
+		Gravity = info.Gravity or 9.8,
+		
+		Standing = true,
 		Jumping = false,
 
-		Weapons = {},
-		Perks = {}
+		Inventory = info.Inventory or Nodes.Collection.New(),
+
+		Killed = 
 	}
 
 	return Nodes.Init(self, Nodes.Entity) :: Nodes._Entity
+end
+
+
+function Nodes.Entity.Prototype:Spawn(character: Model?)
+
 end
 
 
