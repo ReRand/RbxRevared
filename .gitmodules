@@ -2,12 +2,9 @@
 # git mv A B to change the name of submodules
 
 
-[submodule "ClassJS"]
-	path = ClassJS
-	url = https://github.com/ReRand/LuaClassJS
 [submodule "CameraShaker"]
 	path = CameraShaker
 	url = https://github.com/Sleitnick/RbxCameraShaker
 [submodule "ProfileStore"]
-	path = ProfileStore
+	path = ProfileService
 	url = https://github.com/MadStudioRoblox/ProfileStore
