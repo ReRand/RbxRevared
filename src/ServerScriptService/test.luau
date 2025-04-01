@@ -2,8 +2,8 @@
 --!nonstrict
 --!native
 
-local Revared = require(game.ReplicatedStorage.Modules.AceLib)
-local Nodes = require(Revared.Nodes)
+local Revared = require(game.ReplicatedStorage.Modules.Revared)
+local Nodes = require(game.ReplicatedStorage.Modules.Revared.Nodes)
 
 local collection = Nodes.Collection.New({
 	{ 1, "foo" },
@@ -11,10 +11,7 @@ local collection = Nodes.Collection.New({
 }) :: Nodes._Collection<number, string>;
 
 
-collection:GetItems()
-
-
-local entity = Nodes.Entity.New() :: Nodes._Entity
+local entity = Nodes.Entity.New(game.Players.LocalPlayer) :: Nodes._Entity
 
 print(collection)
 print(entity)

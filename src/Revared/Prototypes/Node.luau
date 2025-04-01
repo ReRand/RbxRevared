@@ -32,5 +32,4 @@ end
 function Nodes.Node.Prototype:GetRemote() : Nodes._Node
 end
 
-
 return Nodes.Node :: Nodes._NodeStatic

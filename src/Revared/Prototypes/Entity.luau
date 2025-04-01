@@ -9,6 +9,7 @@ local RunService = game:GetService("RunService")
 
 function Nodes.Entity.New(base: Player | Model, info : Nodes._EntityInfo?) : Nodes._Entity?
 	if RunService:IsClient() then return end
+	info = info or Nodes.EntityInfo.New()
 
 	local self = {
 		Base = base,

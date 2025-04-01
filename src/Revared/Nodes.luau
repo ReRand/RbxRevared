@@ -95,7 +95,7 @@ export type _Node = {
 -- entity class covering ai and players
 do local n, t = Nodes.New("Entity", "Node") Nodes[n] = t :: _EntityStatic end
 export type _EntityStatic = _BaseStaticNode & {
-	New : (base: Player | Model, info : _EntityInfo) -> _Entity?,
+	New : (base: Player | Model, info : _EntityInfo?) -> _Entity?,
 }
 export type _Entity = _Node & {
 	Base: Player | Model,
@@ -118,7 +118,7 @@ export type _Entity = _Node & {
 -- info for entity instances
 do local n, t = Nodes.New("EntityInfo", "Node") Nodes[n] = t :: _EntityInfoStatic end
 export type _EntityInfoStatic = _BaseStaticNode & {
-	New : (info: _EntityInfo) -> _EntityInfo,
+	New : (info: _EntityInfo?) -> _EntityInfo,
 }
 export type _EntityInfo = _Node & {
 
