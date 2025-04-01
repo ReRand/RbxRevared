@@ -130,7 +130,7 @@ export type _EntityInfo = _Node & {
 -- collection of entities with functions relating to them
 do local n, t = Nodes.New("Collection", "Node") Nodes[n] = t :: _CollectionStatic end
 export type _CollectionStatic = _BaseStaticNode & {
-	New : <K,V>(items: { [number]: { [number]: K | V } }) -> _Collection<K,V>,
+	New : <K,V>(items: { [number]: { [number]: K | V } }?) -> _Collection<K,V>,
 }
 export type _Collection<K,V> = _Node & { 
 	[number]: _CollectionItem<K,V>,

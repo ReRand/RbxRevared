@@ -17,9 +17,10 @@ local Revared = {
 local Package = require(script.Package)
 local Nodes = require(script.Nodes) :: Package._NodePackage
 
+local entities = Nodes.Collection.New() :: Nodes._Collection<string, Nodes._Entity>
 
 Revared.CreateNode = Nodes.Spawn
-Revared.Entities = Nodes.
+Revared.Entities = entities
 Revared.Enums = Nodes.Enums
 
 

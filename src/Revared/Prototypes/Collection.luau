@@ -6,7 +6,8 @@ local Nodes = require(script.Parent.Parent.Nodes)
 local RunService = game:GetService("RunService")
 
 
-function Nodes.Collection.New<K,V>(items: { [number]: { [number]: K | V } }) : Nodes._Collection<K,V>
+function Nodes.Collection.New<K,V>(items: { [number]: { [number]: K | V } }?) : Nodes._Collection<K,V>
+	items = items or {}
 	return Nodes.Init(items, Nodes.Collection) :: Nodes._Collection<K,V>
 end
 
