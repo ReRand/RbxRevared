@@ -3,10 +3,12 @@
 --!native
 
 local Revared = require(game.ReplicatedStorage.Modules.Revared)
-local Nodes = require(game.ReplicatedStorage.Modules.Revared.Nodes)
+local Nodes = require(Revared.Nodes)
 
 Revared.Root = Nodes.Root.New()
 
 Revared.Events.GetRoot.OnServerInvoke = function()
     return Revared.Root
 end
+
+Revared.Ready = true

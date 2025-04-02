@@ -3,7 +3,7 @@
 --!native
 
 local Revared = require(game.ReplicatedStorage.Modules.Revared)
-local Nodes = require(game.ReplicatedStorage.Modules.Revared.Nodes)
+local Nodes = require(Revared.Nodes)
 
 local entities = Instance.new("Folder")
 entities.Parent = workspace
