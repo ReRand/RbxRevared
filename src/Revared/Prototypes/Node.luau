@@ -3,6 +3,8 @@
 --!native
 
 local Nodes = require(script.Parent.Parent.Nodes)
+local RunService = game:GetService("RunService")
+local Events = script.Parent.Parent.Events.Node
 
 
 function Nodes.Node.Prototype:Destroy()
@@ -29,7 +31,21 @@ function Nodes.Node.New() : Nodes._Node
 end
 
 
-function Nodes.Node.Prototype:GetRemote() : Nodes._Node
+function Nodes.Node.Prototype:Replicate() : Nodes._Node?
+	if not self.Node:GetConfig().Repilcable then return end
+end
+
+
+function Nodes.Node.Prototype:GetServer(...: string?) : Nodes._Node
+	if RunService:IsServer() then
+		Events.Message:FireClient()
+	end
+end
+
+function Nodes.Node.Prototype:GetClient(player: Player, ...: string? ): Nodes._Node
+	if RunService:IsServer() then
+		
+	end
 end
 
 return Nodes.Node :: Nodes._NodeStatic

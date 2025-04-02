@@ -1,4 +1,5 @@
 local Nodes =  require(script.Parent.Nodes)
+local Test = require(script.Parent.Addons.Test)
 
 export type _NodePackage = {
 	Enums: {},
@@ -18,7 +19,10 @@ export type _NodePackage = {
 	FireInfo: Nodes._FireInfoStatic,
 	Explosion: Nodes._ExplosionStatic,
 	Fire: Nodes._FireStatic,
-	Signal: Nodes._Signal<...any>
+	Signal: Nodes._Signal<...any>,
+	Root: Nodes._RootStatic,
+
+	Test: Test._TestStatic
 }
 
 return {}

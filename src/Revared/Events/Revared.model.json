@@ -3,7 +3,7 @@
     
     "Children": [
 
-        { "Name": "Message", "ClassName": "RemoteEvent" }
+        { "Name": "GetRoot", "ClassName": "RemoteFunction" }
         
     ]
 }
