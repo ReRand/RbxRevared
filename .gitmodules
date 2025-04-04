@@ -8,3 +8,9 @@
 [submodule "src/Dependencies/ProfileStore"]
 	path = src/Dependencies/ProfileStore
 	url = https://github.com/MadStudioRoblox/ProfileStore
+[submodule "src/Dependencies/LemonSignal"]
+	path = src/Dependencies/LemonSignal
+	url = https://github.com/Data-Oriented-House/LemonSignal
+[submodule "src/Dependencies/ByteNet"]
+	path = src/Dependencies/ByteNet
+	url = https://github.com/ffrostfall/ByteNet
