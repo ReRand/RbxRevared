@@ -9,7 +9,7 @@ local RunService = game:GetService("RunService")
 
 function Nodes.Entity.New(info : Nodes._EntityInfo?) : Nodes._Entity?
 	if RunService:IsClient() then return end
-	info = info or Nodes.EntityInfo.New()
+	local info = info or Nodes.EntityInfo.New()
 
 	local self = {
 		StarterCharacter = info.StarterCharacter,

@@ -2,6 +2,30 @@
 --!nonstrict
 --!native
 
+--[[
+
+                                                                                   
+                                                                                   
+,-.----.       ,---,.               ,---,       ,-.----.       ,---,.    ,---,     
+\    /  \    ,'  .' |       ,---.  '  .' \      \    /  \    ,'  .' |  .'  .' `\   
+;   :    \ ,---.'   |      /__./| /  ;    '.    ;   :    \ ,---.'   |,---.'     \  
+|   | .\ : |   |   .' ,---.;  ; |:  :       \   |   | .\ : |   |   .'|   |  .`\  | 
+.   : |: | :   :  |-,/___/ \  | |:  |   /\   \  .   : |: | :   :  |-,:   : |  '  | 
+|   |  \ : :   |  ;/|\   ;  \ ' ||  :  ' ;.   : |   |  \ : :   |  ;/||   ' '  ;  : 
+|   : .  / |   :   .' \   \  \: ||  |  ;/  \   \|   : .  / |   :   .''   | ;  .  | 
+;   | |  \ |   |  |-,  ;   \  ' .'  :  | \  \ ,';   | |  \ |   |  |-,|   | :  |  ' 
+|   | ;\  \'   :  ;/|   \   \   '|  |  '  '--'  |   | ;\  \'   :  ;/|'   : | /  ;  
+:   ' | \.'|   |    \    \   `  ;|  :  :        :   ' | \.'|   |    \|   | '` ,/   
+:   : :-'  |   :   .'     :   \ ||  | ,'        :   : :-'  |   :   .';   :  .'     
+|   |.'    |   | ,'        '---" `--''          |   |.'    |   | ,'  |   ,.'       
+`---'      `----'                               `---'      `----'    '---'         
+                                                                                   
+
+Created by shysolocup :: ReRAND STUDIOS
+
+
+]]
+
 for _, mod: ModuleScript in script:GetDescendants() do
 	if mod:IsA("ModuleScript") then
 		require(mod)
@@ -12,12 +36,12 @@ local Revared = {
 	Addons = script.Addons,
     Nodes = script.Nodes,
 	Events = script.Events.Revared,
-	Ready = false
+	Ready = false,
+	Root = nil
 }
 
 local RunService = game:GetService("RunService")
-local Package = require(script.Package)
-local Nodes = require(script.Nodes) :: Package._NodePackage
+local Nodes = require(script.Nodes)
 
 function Revared.GetRoot(): Nodes._Root
 	return RunService:IsClient() and Revared.Events.GetRoot:InvokeServer() or Revared.Root
@@ -42,6 +66,5 @@ type _Revared = {
 
 Revared.SpawnNode = Nodes.Spawn
 Revared.Enums = Nodes.Enums
-
 
 return Revared :: _Revared

@@ -6,6 +6,32 @@ local LemonSignal = require(script.Parent.Parent.LemonSignal)
 local RunService = game:GetService("RunService")
 
 
+export type _Package = {
+	Enums: {},
+	UID: number,
+	New: (NodeName: string, ...any) -> (string, _BaseStaticNode),
+	Init: (self: { [any]: any }, from: { [any]: any }) -> any,
+	Spawn: <T>(name : string, ...any) -> T,
+
+	Node: _NodeStatic,
+	Collection: _CollectionStatic,
+	CollectionItem: _CollectionItemStatic,
+	Entity: _EntityStatic,
+	EntityInfo: _EntityInfoStatic,
+	Item: _ItemStatic,
+	Projectile: _ProjectileStatic,
+	ProjectileInfo: _ProjectileInfoStatic,
+	ExplosionInfo: _ExplosionInfoStatic,
+	FireInfo: _FireInfoStatic,
+	Explosion: _ExplosionStatic,
+	Fire: _FireStatic,
+	Root: _RootStatic,
+	Signal: {
+		New: () -> LemonSignal.Signal<...any>
+	}
+}
+
+
 local Nodes = {
 	Enums = {},
 	UID = 0
@@ -21,7 +47,7 @@ type _NodeParameters = {
 	Destroyable: boolean?,
 	Readonly: boolean?,
 	Repilcable: boolean?,
-	["Server" | "Client"]: _NodeParameters?
+	[string]: _NodeParameters?
 }
 
 
@@ -42,7 +68,6 @@ function Nodes.New( Config: _NodeParameters, NodeName: string, ...): (string, _B
 		end
 	}
 
-	table.freeze(self)
 	table.freeze(self.Extensions)
 
 	return NodeName, (self :: _BaseStaticNode)
@@ -105,7 +130,6 @@ export type _BaseStaticNode = {
 
 
 
-export type _Signal<T> = LemonSignal.Signal
 Nodes.Signal = LemonSignal
 
 
@@ -138,7 +162,7 @@ do local n, t = Nodes.New({ Readonly = true, Destroyable = false }, "Root", "Nod
 export type _RootStatic = _BaseStaticNode & {
 	New : () -> _Root,
 }
-export type _Root = {
+export type _Root = _Node & {
 	Entities: _Collection<string, _Entity>
 }
 
@@ -164,7 +188,7 @@ export type _Entity = _Node & {
 	Inventory: _Collection<number, _Item>,
 
 	Kill: (self: any, reason: string) -> any,
-	Killed: _Signal<string>
+	Killed: LemonSignal.Signal<string>
 }
 
 
@@ -329,5 +353,4 @@ export type _Fire = _Node & {
 }
 
 
-local Package = require(script.Parent.Package)
-return Nodes :: Package._NodePackage
+return Nodes :: _Package

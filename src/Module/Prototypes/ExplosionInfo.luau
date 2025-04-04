@@ -7,7 +7,7 @@ local RunService = game:GetService("RunService")
 
 
 function Nodes.ExplosionInfo.New(projectile: Nodes._Projectile, info : { [string]: any }?) : Nodes._ExplosionInfo
-    info = info or {}
+    local info = info or {}
     
     local self = {
         FilterType = Enum.RaycastFilterType.Exclude,

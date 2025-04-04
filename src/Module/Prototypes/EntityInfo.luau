@@ -7,7 +7,7 @@ local Nodes = require(script.Parent.Parent.Nodes)
 
 
 function Nodes.EntityInfo.New(info : { [string]: any }?) : Nodes._EntityInfo?
-	info = info or Nodes.EntityInfo.New()
+	local info: { [string]: any } = info or {}
 
 	local self = {
 	}

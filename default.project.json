@@ -9,20 +9,18 @@
 				"$className": "Folder",
 
 				"LemonSignal": {
-					"$path": "LemonSignal.luau"
+					"$path": "src/Dependencies/LemonSignal.luau"
 				},
 
 				"CameraShaker": {
-					"$className": "ModuleScript",
-					"$path": "CameraShaker/src/CameraShaker"
+					"$path": "src/Dependencies/RbxCameraShaker/src/CameraShaker"
 				},
 
 				"ProfileService": {
-					"$path": "ProfileService/ProfileService.lua"
+					"$path": "src/Dependencies/ProfileStore/ProfileStore.luau"
 				},
 
 				"Revared": {
-					"$className": "ModuleScript",
 					"$path": "src/Module"
 				}
 			}

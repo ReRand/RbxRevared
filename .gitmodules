@@ -2,9 +2,6 @@
 # git mv A B to change the name of submodules
 
 
-[submodule "ProfileStore"]
-	path = src/Dependencies/ProfileService
-	url = https://github.com/MadStudioRoblox/ProfileStore
 [submodule "src/Dependencies/RbxCameraShaker"]
 	path = src/Dependencies/RbxCameraShaker
 	url = https://github.com/Sleitnick/RbxCameraShaker

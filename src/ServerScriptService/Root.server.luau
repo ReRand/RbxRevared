@@ -7,7 +7,9 @@ local Nodes = require(Revared.Nodes)
 
 Revared.Root = Nodes.Root.New()
 
-Revared.Events.GetRoot.OnServerInvoke = function()
+local GetRoot = Revared.Events:FindFirstChild("GetRoot") :: RemoteFunction
+
+GetRoot.OnServerInvoke = function()
     return Revared.Root
 end
 

@@ -5,7 +5,6 @@
 local Revared = require(game.ReplicatedStorage.Modules.Revared)
 local Nodes = require(Revared.Nodes)
 
-local root = Revared:GetRoot()
-Revared.Root = root
+repeat task.wait() until Revared.GetRoot()
 
 Revared.Ready = true

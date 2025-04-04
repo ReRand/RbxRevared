@@ -6,6 +6,7 @@ local Revared = require(game.ReplicatedStorage.Modules.Revared)
 local Nodes = require(Revared.Nodes)
 
 local entities = Instance.new("Folder")
+entities.Name = "Entities"
 entities.Parent = workspace
 
 game.Players.PlayerAdded:Connect(function(player)
