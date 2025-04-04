@@ -3,7 +3,6 @@
 --!native
 
 --[[
-
                                                                                    
                                                                                    
 ,-.----.       ,---,.               ,---,       ,-.----.       ,---,.    ,---,     
@@ -26,11 +25,13 @@ Created by shysolocup :: ReRAND STUDIOS
 
 ]]
 
+
 for _, mod: ModuleScript in script:GetDescendants() do
 	if mod:IsA("ModuleScript") then
 		require(mod)
 	end
 end
+
 
 local Revared = {
 	Addons = script.Addons,
@@ -40,16 +41,20 @@ local Revared = {
 	Root = nil
 }
 
+
 local RunService = game:GetService("RunService")
 local Nodes = require(script.Nodes)
+
 
 function Revared.GetRoot(): Nodes._Root
 	return RunService:IsClient() and Revared.Events.GetRoot:InvokeServer() or Revared.Root
 end
 
+
 function Revared.WaitUntilReady()
 	repeat task.wait() until Revared.Ready
 end
+
 
 type _Revared = {
 	Addons: Folder,
@@ -64,7 +69,9 @@ type _Revared = {
 	WaitUntilReady: () -> nil
 }
 
+
 Revared.SpawnNode = Nodes.Spawn
 Revared.Enums = Nodes.Enums
+
 
 return Revared :: _Revared
