@@ -9,7 +9,6 @@
 				"$className": "Folder",
 
 				"LemonSignal": {
-					"$className": "ModuleScript",
 					"$path": "LemonSignal.luau"
 				},
 
@@ -19,13 +18,12 @@
 				},
 
 				"ProfileService": {
-					"$className": "ModuleScript",
 					"$path": "ProfileService/ProfileService.lua"
 				},
 
 				"Revared": {
 					"$className": "ModuleScript",
-					"$path": "src/Revared"
+					"$path": "src/Module"
 				}
 			}
 		},
