@@ -33,12 +33,16 @@ for _, mod: ModuleScript in script:GetDescendants() do
 end
 
 
+switch = function(cases,arg)
+	return assert (loadstring ('return ' .. cases[arg]))()
+end
+
+
 local Revared = {
 	Addons = script.Addons,
     Nodes = script.Nodes,
 	Events = script.Events.Revared,
-	Ready = false,
-	Root = nil
+	Root = nil,
 }
 
 
@@ -51,22 +55,16 @@ function Revared.GetRoot(): Nodes._Root
 end
 
 
-function Revared.WaitUntilReady()
-	repeat task.wait() until Revared.Ready
-end
-
-
 type _Revared = {
 	Addons: Folder,
 	Nodes: ModuleScript,
 	Enums: {},
-	Root: Nodes._Root?,
+	Root: Nodes._Root,
 	Events: Folder,
 	Ready: boolean,
 
 	SpawnNode: <T>(name : string, ...any) -> T,
 	GetRoot: () -> Nodes._Root,
-	WaitUntilReady: () -> nil
 }
 
 

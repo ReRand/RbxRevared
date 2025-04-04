@@ -28,7 +28,7 @@ export type _Package = {
 	Root: _RootStatic,
 	Signal: {
 		New: () -> LemonSignal.Signal<...any>
-	}
+	},
 }
 
 

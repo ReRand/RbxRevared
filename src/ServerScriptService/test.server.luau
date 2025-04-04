@@ -5,8 +5,6 @@
 local Revared = require(game.ReplicatedStorage.Modules.Revared)
 local Nodes = require(game.ReplicatedStorage.Modules.Revared.Nodes)
 
-Revared.WaitUntilReady()
-
 local collection = Nodes.Collection.New({
 	{ 1, "foo" },
 	{ 2, "a" }

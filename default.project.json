@@ -7,9 +7,10 @@
 		"ReplicatedStorage": {
 			"Modules": {
 				"$className": "Folder",
+				"$ignoreUnknownInstances": true,
 
 				"LemonSignal": {
-					"$path": "src/Dependencies/LemonSignal.luau"
+					"$path": "src/Dependencies/LemonSignal/src/LemonSignal.lua"
 				},
 
 				"CameraShaker": {
@@ -20,8 +21,13 @@
 					"$path": "src/Dependencies/ProfileStore/ProfileStore.luau"
 				},
 
+				"ByteNet": {
+					"$path": "src/Dependencies/ByteNet/src"
+				},
+
 				"Revared": {
-					"$path": "src/Module"
+					"$path": "src/Module",
+					"$ignoreUnknownInstances": true
 				}
 			}
 		},
@@ -29,14 +35,16 @@
 		"ServerStorage": {
 			"Revared": {
 				"$className": "Folder",
-				"$path": "src/ServerStorage"
+				"$path": "src/ServerStorage",
+				"$ignoreUnknownInstances": true
 			}
 		},
 
 		"ServerScriptService": {
 			"Revared": {
 				"$className": "Folder",
-				"$path": "src/ServerScriptService"
+				"$path": "src/ServerScriptService",
+				"$ignoreUnknownInstances": true
 			}
 		},
 
@@ -44,13 +52,15 @@
 			"StarterCharacterScripts": {
 				"Revared": {
 					"$className": "Folder",
-					"$path": "src/StarterCharacterScripts"
+					"$path": "src/StarterCharacterScripts",
+					"$ignoreUnknownInstances": true
 				}
 			},
 			"StarterPlayerScripts": {
 				"Revared": {
 					"$className": "Folder",
-					"$path": "src/StarterPlayerScripts"
+					"$path": "src/StarterPlayerScripts",
+					"$ignoreUnknownInstances": true
 				}
 			}
 		}

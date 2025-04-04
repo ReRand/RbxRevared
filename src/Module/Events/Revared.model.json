@@ -3,7 +3,8 @@
     
     "Children": [
 
-        { "Name": "GetRoot", "ClassName": "RemoteFunction" }
+        { "Name": "GetRoot", "ClassName": "RemoteFunction" },
+        { "Name": "ReplicateTask", "ClassName": "RemoteEvent" }
         
     ]
 }
