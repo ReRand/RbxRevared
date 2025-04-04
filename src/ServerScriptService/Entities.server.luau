@@ -15,5 +15,5 @@ game.Players.PlayerAdded:Connect(function(player)
 		Player = player
 	}))
 
-	Revared.Root.Entities.Add(`player_{player.UserId}`, entity)
+	Revared.Root.Entities:Add(`player_{player.UserId}`, entity)
 end)

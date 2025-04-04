@@ -27,7 +27,7 @@ export type _Package = {
 	Fire: _FireStatic,
 	Root: _RootStatic,
 	Signal: {
-		New: () -> LemonSignal.Signal<...any>
+		new: () -> LemonSignal.Signal<...any>
 	},
 }
 

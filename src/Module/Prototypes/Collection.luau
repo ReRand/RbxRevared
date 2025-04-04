@@ -15,7 +15,7 @@ end
 
 function Nodes.Collection.Prototype:Add(key, value, index: number?): number
 	local index = index or #self
-	table.insert(self, index { key, value })
+	table.insert(self, index, { key, value })
 	return index
 end
 
